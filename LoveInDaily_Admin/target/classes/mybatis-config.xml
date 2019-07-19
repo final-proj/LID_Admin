@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<typeAliases>
+	</typeAliases>
+	
+	<!-- 어느 부분에 typeHandler를 적용할 것인지 패키지 영역을 설정한다. -->
+	<typeHandlers>
+		<package name="com.kh.lida.common.typeHandler"/>
+	</typeHandlers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
