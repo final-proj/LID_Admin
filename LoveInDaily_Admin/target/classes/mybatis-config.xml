@@ -8,6 +8,7 @@
 	</settings>
 
 	<typeAliases>
+		<typeAlias type="com.kh.lida.notice.model.vo.Notice" alias="notice"/>
 	</typeAliases>
 	
 	<!-- 어느 부분에 typeHandler를 적용할 것인지 패키지 영역을 설정한다. -->
