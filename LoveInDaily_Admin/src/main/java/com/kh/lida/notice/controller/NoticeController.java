@@ -1,27 +1,20 @@
 package com.kh.lida.notice.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
 import com.kh.lida.common.util.Utils;
 import com.kh.lida.notice.model.service.NoticeService;
+import com.kh.lida.notice.model.vo.Notice;
 
 @Controller
 public class NoticeController {
@@ -36,7 +29,6 @@ public class NoticeController {
 
 		// 1. 현재 페이지 게시글 목록 가져오기
 		ArrayList<Map<String, String>> list = new ArrayList<>(noticeService.selectNoticeList(cPage, limit));
-
 		// 2. 전체 페이지 게시글 수 가져오기
 		int totalContents = noticeService.selectNoticeTotalContents();
 
@@ -50,41 +42,56 @@ public class NoticeController {
 	
 	
 	@RequestMapping("/notice/noticeInsert.do")
-	public void noticeInsert() {
+	public String noticeInsert(Notice n, Model model) {
 		
+		System.out.println(n);
+		int result = noticeService.insertNotice(n);
+		
+		String loc = "/notice/noticeList.do";
+		String msg = "";
+		
+		if(result > 0) msg = "등록 성공";
+		else msg = "등록 실패";
+		
+		model.addAttribute("loc", loc).addAttribute("msg", msg);
+		
+		return "common/msg";
 	}
 	
-//	@RequestMapping("/notice/noticeListEnd")
-//	public String insertNoticeEnd() {
-//		
-//	}
-	
-	@PostMapping("Image.do")
+	@RequestMapping(value="/notice/noticeView.do", method = RequestMethod.POST)
 	@ResponseBody
-	public void imageUpload(@RequestParam MultipartFile file ,@RequestParam HttpServletRequest request, @RequestParam HttpServletResponse response) {
-		try {
-			PrintWriter out = response.getWriter();
-			String folder = request.getSession().getServletContext().getRealPath("/resources");
-			UUID uuid = UUID.randomUUID();
-			
-			String org_fileName = file.getOriginalFilename();
-			String str_fileName = uuid.toString() + org_fileName;
-			
-			String filePath = folder + "/image/" + str_fileName;
-			
-			File f = new File(filePath);
-			if(!f.exists()) f.mkdirs();
-			
-			out.print("http://localhost:8088/DMG/resources/recipeUpload/" + str_fileName);
-			out.flush();
-			out.close();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public Notice selectOneNotice(@RequestParam int nno) {
+		System.out.println(nno);
+		Notice n = noticeService.selectOneNotice(nno);
+		return n;
+	}
+
+	@RequestMapping("/notice/noticeUpdate")
+	public String noticeUpdate(Notice n, Model model) {
 		
+		int result = noticeService.updateNotice(n);
+		String msg ="";
+		String loc = "/notice/noticeList.do";
+		if(result > 0) msg = "게시글 수정 성공";
+		else msg = "게시글 수정 실패";
+		
+		model.addAttribute("loc", loc).addAttribute("msg", msg);
+		return "common/msg";
 	}
 	
+	@RequestMapping("/notice/noticeDelete.do")
+	public String noticeDelete(@RequestParam int nno, Model model) {
+		System.out.println(nno);
+		int result = noticeService.deleteNotice(nno);
+		
+		String loc = "/notice/noticeList.do";
+		String msg = "";
+		
+		if(result > 0) msg = "게시글 삭제 성공";
+		else msg = "게시글 삭제 실패";
+		model.addAttribute("loc", loc).addAttribute("msg", msg);
+		
+		return "/common/msg";
+	}
 	
 }

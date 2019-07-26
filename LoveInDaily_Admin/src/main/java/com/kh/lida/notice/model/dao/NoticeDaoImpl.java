@@ -31,25 +31,25 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public Notice selectOneNotice(int nno) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("notice.selectOneNotice", nno);
 	}
 
 	@Override
 	public int insertNotice(Notice n) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("notice.insertNotice", n);
 	}
 
 	@Override
-	public int updateNotice(int nno) {
+	public int updateNotice(Notice n) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("notice.updateNotice", n);
 	}
 
 	@Override
 	public int deleteNotice(int nno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("notice.deleteNotice", nno);
 	}
 
 }

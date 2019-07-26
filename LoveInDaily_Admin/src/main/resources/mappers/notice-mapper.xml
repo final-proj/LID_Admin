@@ -10,4 +10,19 @@
 	<select id="selectNoticeTotalContents" resultType="_int">
 		SELECT COUNT(*) FROM NOTICE
 	</select>
+	<select id="selectOneNotice" parameterType="_int" resultType="notice">
+		SELECT * FROM NOTICE WHERE NNO = #{nno}
+	</select>
+	
+	<insert id="insertNotice" >
+		INSERT INTO NOTICE VALUES(SEQ_NOTICE.NEXTVAL, #{adminId}, #{nTitle}, #{nContent}, DEFAULT, 0)
+	</insert>
+	
+	<update id="updateNotice">
+		UPDATE NOTICE SET NTITLE = #{nTitle}, NCONTENT = #{nContent} WHERE NNO = #{nno}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="_int">
+		DELETE FROM NOTICE WHERE NNO = #{nno}
+	</delete>
 </mapper>
