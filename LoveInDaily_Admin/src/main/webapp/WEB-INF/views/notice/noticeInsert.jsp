@@ -859,7 +859,6 @@
         // For select 2
         //***********************************//
         $(".select2").select2();
-
         /*colorpicker*/
         $('.demo').each(function() {
         //
@@ -874,7 +873,6 @@
         $(this).minicolors({
                 control: $(this).attr('data-control') || 'hue',
                 position: $(this).attr('data-position') || 'bottom left',
-
                 change: function(value, opacity) {
                     if (!value) return;
                     if (opacity) value += ', ' + opacity;
@@ -884,7 +882,6 @@
                 },
                 theme: 'bootstrap'
             });
-
         });
         /*datepicker*/
         jQuery('.mydatepicker').datepicker();
@@ -895,8 +892,3 @@
         var quill = new Quill('#editor', {
             theme: 'snow'
         });
-
-    </script>
-</body>
-
-</html>

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <footer class="footer text-center">
-	All Rights Reserved by Matrix-admin. Designed and Developed by <a
-		href="https://wrappixel.com">WrapPixel</a>.
+   All Rights Reserved by Matrix-admin. Designed and Developed by <a
+      href="https://wrappixel.com">WrapPixel</a>.
 </footer>
 
     <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery/dist/jquery.min.js"></script>
@@ -23,6 +23,7 @@
     <!--Custom JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/dist/js/custom.min.js"></script>
     <!-- This Page JS -->
+
     <script src="${pageContext.request.contextPath }/resources/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/dist/js/pages/mask/mask.init.js"></script>
     <script src="${pageContext.request.contextPath }/resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
