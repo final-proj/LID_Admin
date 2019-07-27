@@ -51,11 +51,13 @@
 			});
 		});
 	});
+
 	function fn_delete(){
 		var nno = $('#nno').val();
 		console.log(nno);
 		location.href="${pageContext.request.contextPath}/notice/noticeDelete.do?nno="+nno;
 	}
+
 </script>
 </head>
 <body>

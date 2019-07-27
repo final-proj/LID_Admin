@@ -23,4 +23,14 @@
     <!--Custom JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/dist/js/custom.min.js"></script>
     <!-- This Page JS -->
+
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/dist/js/pages/mask/mask.init.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.min.js"></script>
