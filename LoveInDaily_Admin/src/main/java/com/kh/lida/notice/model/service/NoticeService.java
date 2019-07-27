@@ -43,7 +43,7 @@ public interface NoticeService {
 	 * @param nno
 	 * @return
 	 */
-	int updateNotice(int nno);
+	int updateNotice(Notice n);
 	
 	/**
 	 * 공지사항 삭제

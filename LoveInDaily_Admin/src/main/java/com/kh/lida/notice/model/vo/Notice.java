@@ -10,9 +10,9 @@ public class Notice implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1220L;
-	private String nno;
+	private int nno;
 	private String adminId;
-	private String nName;
+	private String nTitle;
 	private String nContent;
 	private String nDate;
 	private String nCount;
@@ -21,22 +21,22 @@ public class Notice implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Notice(String nno, String adminId, String nName, String nContent, String nDate, String nCount) {
+
+	public Notice(int nno, String adminId, String nTitle, String nContent, String nDate, String nCount) {
 		super();
 		this.nno = nno;
 		this.adminId = adminId;
-		this.nName = nName;
+		this.nTitle = nTitle;
 		this.nContent = nContent;
 		this.nDate = nDate;
 		this.nCount = nCount;
 	}
 
-	public String getNno() {
+	public int getNno() {
 		return nno;
 	}
 
-	public void setNno(String nno) {
+	public void setNno(int nno) {
 		this.nno = nno;
 	}
 
@@ -48,12 +48,12 @@ public class Notice implements Serializable{
 		this.adminId = adminId;
 	}
 
-	public String getnName() {
-		return nName;
+	public String getnTitle() {
+		return nTitle;
 	}
 
-	public void setnName(String nName) {
-		this.nName = nName;
+	public void setnTitle(String nTitle) {
+		this.nTitle = nTitle;
 	}
 
 	public String getnContent() {
@@ -82,8 +82,9 @@ public class Notice implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Notice [nno=" + nno + ", adminId=" + adminId + ", nName=" + nName + ", nContent=" + nContent
+		return "Notice [nno=" + nno + ", adminId=" + adminId + ", nTitle=" + nTitle + ", nContent=" + nContent
 				+ ", nDate=" + nDate + ", nCount=" + nCount + "]";
 	}
+	
 	
 }

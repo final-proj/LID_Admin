@@ -12,11 +12,11 @@
 			<ul id="sidebarnav" class="p-t-30">
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }" aria-expanded="false"><i
+					href="${pageContext.request.contextPath}" aria-expanded="false"><i
 						class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/views/membermanagement/charts.jsp"
+					href="${pageContext.request.contextPath}/memberManagement/mmForm.do"
 					aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
 						class="hide-menu">Member management</span></a></li>
 				<li class="sidebar-item"><a
