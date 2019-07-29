@@ -12,7 +12,7 @@
 	
 	<appender class="org.apache.log4j.DailyRollingFileAppender" name="fileLogger">
 
-		<param name="file" value="C:/Users/Song/workspace/SpringWorkspace/04_SpringProject/src/main/resources/logs/system/system.log"/>
+		<param name="file" value="C:/Users/Won/git/LID_Admin/LoveInDaily_Admin/src/main/resources/logs/system/system.log"/>
 
 		<param name="Append" value="true"/>
 		<param name="datePattern" value=".yyyy-MM-dd"/>
