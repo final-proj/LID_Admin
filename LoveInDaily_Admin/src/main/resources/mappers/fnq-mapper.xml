@@ -6,5 +6,24 @@
 	<select id="selectFnqList" resultType="fnq">
 		SELECT * FROM FNQ
 	</select>
+	<select id="selectFnqTotalContents" resultType="_int">
+		SELECT COUNT(*) FROM FNQ
+	</select>
+	
+	<select id="selectOneFnq" parameterType="_int" resultType="fnq">
+		SELECT * FROM FNQ WHERE FNO = #{fno}
+	</select>
+	
+	<insert id="insertFnq" >
+		INSERT INTO FNQ VALUES(SEQ_FNQ.NEXTVAL, #{fTitle}, #{fContent}, #{fCategory})
+	</insert>
+	
+	<update id="updateFnq">
+		UPDATE FNQ SET FTITLE = #{fTitle}, FCONTENT = #{fContent}, FCATEGORY = #{fCategory} WHERE FNO = #{fno}
+	</update>
+	
+	<delete id="deleteFnq" parameterType="_int">
+		DELETE FROM FNQ WHERE FNO = #{fno}
+	</delete>
 	
 </mapper>

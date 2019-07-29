@@ -9,9 +9,11 @@ public interface FnqService {
 	
 	/**
 	 * FNQ 목록 조회
+	 * @param limit 
+	 * @param cPage 
 	 * @return
 	 */
-	List<Map<String, String>> selectFnqList();
+	List<Map<String, String>> selectFnqList(int cPage, int limit);
 	
 	/**
 	 * FNQ 조회
@@ -25,7 +27,7 @@ public interface FnqService {
 	 * @param f
 	 * @return
 	 */
-	Fnq insertFnq(Fnq f);
+	int insertFnq(Fnq f);
 	
 	/**
 	 * FNQ 수정
@@ -40,5 +42,11 @@ public interface FnqService {
 	 * @return
 	 */
 	int deleteFnq(int fno);
+
+	/**
+	 * FNQ 전체 페이지 조회
+	 * @return
+	 */
+	int selectFnqTotalContents();
 	
 }

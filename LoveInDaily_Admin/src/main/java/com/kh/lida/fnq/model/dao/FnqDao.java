@@ -6,13 +6,15 @@ import java.util.Map;
 import com.kh.lida.fnq.model.vo.Fnq;
 
 public interface FnqDao {
-	List<Map<String, String>> selectFnqList();
+	List<Map<String, String>> selectFnqList(int cPage, int limit);
 
 	Fnq selectOneFnq(int fno);
 
-	Fnq insertFnq(Fnq f);
+	int insertFnq(Fnq f);
 
 	int updateFnq(Fnq f);
 
 	int deleteFnq(int fno);
+	
+	int selectFnqTotalContents();
 }
