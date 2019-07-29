@@ -122,6 +122,7 @@
 									</form>
 								</c:forEach>
 							</div>
+                <c:out value="${pageBar}" escapeXml="false"/>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -145,7 +146,7 @@
                                     <div class="form-group row">
                                         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contents</label>
                                         <div class="col-sm-9" >
-                                   <div id="editor" style="height: 262px;">
+                                   <div id="editor" style="height: 305.6px;">
                                 	</div>
 									<textarea name="nContent" style="display:none" id="hiddenArea"></textarea>
 
