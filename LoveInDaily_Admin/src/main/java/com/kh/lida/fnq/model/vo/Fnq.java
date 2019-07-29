@@ -14,7 +14,6 @@ public class Fnq implements Serializable {
 	
 	private int fno;
 	private String fTitle;
-	private String fWriter;
 	private String fContent;
 	private String fCategory;
 	
@@ -27,7 +26,6 @@ public class Fnq implements Serializable {
 		super();
 		this.fno = fno;
 		this.fTitle = fTitle;
-		this.fWriter = fWriter;
 		this.fContent = fContent;
 		this.fCategory = fCategory;
 	}
@@ -48,14 +46,6 @@ public class Fnq implements Serializable {
 		this.fTitle = fTitle;
 	}
 
-	public String getfWriter() {
-		return fWriter;
-	}
-
-	public void setfWriter(String fWriter) {
-		this.fWriter = fWriter;
-	}
-
 	public String getfContent() {
 		return fContent;
 	}
@@ -74,7 +64,7 @@ public class Fnq implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Fnq [fno=" + fno + ", fTitle=" + fTitle + ", fWriter=" + fWriter + ", fContent=" + fContent
+		return "Fnq [fno=" + fno + ", fTitle=" + fTitle + ", fContent=" + fContent
 				+ ", fCategory=" + fCategory + "]";
 	}
 	

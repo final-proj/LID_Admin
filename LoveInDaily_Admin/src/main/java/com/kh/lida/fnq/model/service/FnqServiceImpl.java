@@ -16,32 +16,39 @@ public class FnqServiceImpl implements FnqService {
 	private FnqDao fnqDao;
 	
 	@Override
-	public List<Map<String, String>> selectFnqList() {
-		return fnqDao.selectFnqList();
+	public List<Map<String, String>> selectFnqList(int cPage, int limit) {
+		// TODO Auto-generated method stub
+		return fnqDao.selectFnqList(cPage, limit);
 	}
 
 	@Override
 	public Fnq selectOneFnq(int fno) {
 		// TODO Auto-generated method stub
-		return null;
+		return fnqDao.selectOneFnq(fno);
 	}
 
 	@Override
-	public Fnq insertFnq(Fnq f) {
+	public int insertFnq(Fnq f) {
 		// TODO Auto-generated method stub
-		return null;
+		return fnqDao.insertFnq(f);
 	}
 
 	@Override
 	public int updateFnq(Fnq f) {
 		// TODO Auto-generated method stub
-		return 0;
+		return fnqDao.updateFnq(f);
 	}
 
 	@Override
 	public int deleteFnq(int fno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return fnqDao.deleteFnq(fno);
+	}
+
+	@Override
+	public int selectFnqTotalContents() {
+		// TODO Auto-generated method stub
+		return fnqDao.selectFnqTotalContents();
 	}
 
 }
