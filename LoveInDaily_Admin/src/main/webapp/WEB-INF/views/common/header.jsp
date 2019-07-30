@@ -17,14 +17,13 @@
     <link href="${pageContext.request.contextPath }/resources/assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath }/resources/dist/css/style.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/jquery-minicolors/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.snow.css">
+    
 
    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
    <script src="${pageContext.request.contextPath }/resources/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
    <script src="${pageContext.request.contextPath }/resources/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
    <script src="${pageContext.request.contextPath }/resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-   

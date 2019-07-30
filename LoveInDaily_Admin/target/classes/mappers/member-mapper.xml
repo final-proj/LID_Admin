@@ -17,7 +17,6 @@
 		UPDATE MEMBER SET MLEVEL =
 		'일반회원' WHERE MNO = #{mNo}
 	</update>
-	
 	<delete id="mmDelete" parameterType="_int">
 		DELETE FROM MEMBER WHERE MNO = #{mNo}
 	</delete>

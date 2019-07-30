@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.lida.memberManagement.model.vo.Member;
+import com.kh.lida.memberManagement.model.vo.MemberProfile;
+import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 
 public interface MemberManagementService {
 
@@ -31,8 +33,17 @@ public interface MemberManagementService {
 	 */
 	int mmDelete(int mNo);
 	
+	/**
+	 * 회원 프로필 불러오기 위한 메소드 
+	 * @return
+	 */
+	MemberProfile mmSelectProfile(int mNo);
 	
-	
+	/**
+	 * 회원 프로필  이미지를 불러오기 위한 메소드 
+	 * @return
+	 */
+	MemberProfileImg mmSelectProfileImg(int mNo);
 	
 	
 	
