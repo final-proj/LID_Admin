@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.lida.memberManagement.model.vo.Member;
+import com.kh.lida.memberManagement.model.vo.MemberProfile;
+import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 
 @Repository
 public class MemberManagementDaoImpl implements MemberManagementDao{
@@ -41,5 +43,21 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 		return sqlSession.delete("member.mmDelete", mNo);
 		
 	}
+
+	@Override
+	public MemberProfile mmSelectProfile(int mNo) {
+
+		return sqlSession.selectOne("member.mmSelectProfile", mNo);
+		
+	}
+
+	@Override
+	public MemberProfileImg mmSelectProfileImg(int mNo) {
+		
+		return sqlSession.selectOne("member.mmSelectProfileImg", mNo);
+		
+	}
+	
+	
 	
 }

@@ -9,7 +9,7 @@
       href="https://wrappixel.com">WrapPixel</a>.
 </footer>
 
-    <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery/dist/jquery.min.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery/dist/jquery.min.js"></script> --%>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>

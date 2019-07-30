@@ -18,8 +18,7 @@ public class MemberManagementController {
 
 	@Autowired
 	MemberManagementService memberManagementService;
-	
-	
+
 	
 	  @RequestMapping("/memberManagement/mmForm.do")
 	  public String mmForm(Model model) {
@@ -73,6 +72,17 @@ public class MemberManagementController {
 
 			return "common/msg";
 		 
+	  }
+	  
+	  @RequestMapping("/memberManagement/mmSelectProfile.do")
+	  public String mmSelectProfile(@RequestParam int mNo) {
+		  
+		  MemberProfile mp = memberManagementService.mmSelectProfile(mNo);
+		  
+		  
+		  return "";
+		  
+		  
 	  }
 
 }

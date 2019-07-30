@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <title>Love In Daily</title>
 <c:import url="../common/header.jsp" />
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/assets/libs/jquery-modal/jquery.modal.css" />
+
+
 </head>
 <body>
 	<!-- ============================================================== -->
@@ -70,7 +76,8 @@
 												<th>연락처</th>
 												<th>가입일</th>
 												<th>회원상태</th>
-												<th></th>
+												<!-- <th>신고</th> -->
+												<th>프로필 확인</th>
 
 											</tr>
 										</thead>
@@ -84,31 +91,18 @@
 													<td>${m.mDate}</td>
 													<td>${m.mLevel}</td>
 													<td>
-														<button class="btn btn-warning btn-sm" id="${m.mNo}"
-															onclick="DisableMem('${m.mNo}', '${m.mLevel}');">
-															<c:choose>
-																<c:when test="${m.mLevel eq '정지'}">
-														 			해제
-														 		</c:when>
-														 		<c:otherwise>
-														 			정지
-														 		</c:otherwise>
-															</c:choose>
-															
-															
-															</button>
-															<%-- <button class="btn btn-warning btn-sm" id="${m.mNo}"
-															onclick="DisableMem('${m.mNo}');">
-															</button> --%>
-														<button class="btn btn-danger btn-sm" id="${m.mNo}"
-															onclick="DeleteMem('${m.mNo}');">삭제</button>
+														<button class="btn btn-outline-secondary btn-sm"
+															id="${m.mNo}" onclick="DeleteMem('${m.mNo}');">
+															<i class="mdi mdi-account-check"></i> 프로필 확인
+														</button>
 													</td>
+
+
 												</tr>
 											</c:forEach>
 									</table>
+
 								</div>
-
-
 							</div>
 						</div>
 					</div>
@@ -116,6 +110,78 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div class="modal" id="testModal" tabindex="-1" role="dialog">
+
+		<div class="modal-dialog modal-lg" >
+
+			<div class="modal-content" style="width:1000px; float:right;">
+
+
+				<div class="modal-body" ></div>
+					
+					
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">회원관리</h4>
+                    </div>
+                    
+                    <div class="container-fluid">
+
+				<div class="row">
+					<div class="col-md-6"  style="background:gray;">
+						<div class="card" style="background:gray;">
+							<div class="card-body">
+								<h4 class="card-title m-b-0">
+								<br />
+									신고 리스트
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									
+								</h4>
+
+							</div>
+							<div id="tt" class="comment-widgets scrollable">
+								<c:forEach items="${list}" var="n">
+								<form id="${n.nno }">
+									<div class="d-flex flex-row comment-row m-t-0" id="${n.nno }">
+										<div class="comment-text w-100">
+											<h6 class="font-medium">제목 : ${n.nTitle }</h6>
+											<span class="m-b-15 d-block">작성자 : ${n.adminId }</span>
+											<div class="comment-footer">
+												<span class="text-muted float-right">${n.nDate }</span>
+											</div>
+										</div>
+									</div>
+									</form>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn" data-dismiss="modal">닫기</button>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
 	<script>
 		/****************************************
 		 *       Basic Table                   *
@@ -123,19 +189,32 @@
 		$('#zero_config').DataTable();
 	</script>
 
+
+
 	<script>
 		function DisableMem(mNo, mLevel) {
-			
-			if(mLevel == '정지')	location.href = "${pageContext.request.contextPath}/memberManagement/mmAble.do?mNo=" + mNo;
-			else location.href = "${pageContext.request.contextPath}/memberManagement/mmDisable.do?mNo=" + mNo;
-			
+
+			location.href = "${pageContext.request.contextPath}/memberManagement/mmDisable.do?mNo="
+					+ mNo;
+
 		}
 
 		function DeleteMem(mNo, mLevel) {
-			
-			location.href = "${pageContext.request.contextPath}/memberManagement/mmDelete.do?mNo=" + mNo;
+
+			location.href = "${pageContext.request.contextPath}/memberManagement/mmDelete.do?mNo="
+					+ mNo;
 
 		}
+
+		$("#zero_config td").click(function() {
+
+			var mno = $(this).parent().children().eq(0).text();
+
+			$("#testModal").modal();
+			
+			
+
+		});
 	</script>
 
 </body>

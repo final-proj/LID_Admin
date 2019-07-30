@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.kh.lida.memberManagement.model.dao.MemberManagementDao;
 import com.kh.lida.memberManagement.model.vo.Member;
+import com.kh.lida.memberManagement.model.vo.MemberProfile;
+import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 
 
 @Service
@@ -41,6 +43,19 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 
 		return memberManagementDao.mmDelete(mNo);
 		
+	}
+
+	@Override
+	public MemberProfile mmSelectProfile(int mNo) {
+		// TODO Auto-generated method stub
+		
+		return memberManagementDao.mmSelectProfile(mNo);
+	}
+
+	@Override
+	public MemberProfileImg mmSelectProfileImg(int mNo) {
+		// TODO Auto-generated method stub
+		return memberManagementDao.mmSelectProfileImg(mNo);
 	}
 	
 	
