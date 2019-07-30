@@ -28,4 +28,3 @@
    <script src="${pageContext.request.contextPath }/resources/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
    <script src="${pageContext.request.contextPath }/resources/assets/extra-libs/DataTables/datatables.min.js"></script>
    
-   

@@ -24,7 +24,7 @@ public class FnqController {
 	
 	@RequestMapping("/fnq/fnqList.do")
 	public String selectFnqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model) {
-		int limit = 4; // 한 페이지 당 게시글 수
+		int limit = 6; // 한 페이지 당 게시글 수
 
 		// 1. 현재 페이지 게시글 목록 가져오기
 		ArrayList<Map<String, String>> list = new ArrayList<>(fnqServie.selectFnqList(cPage, limit));

@@ -23,6 +23,17 @@
     <!--Custom JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/dist/js/custom.min.js"></script>
     <!-- This Page JS -->
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/excanvas.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/jquery.flot.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/dist/js/pages/chart/chart-page-init.js"></script>
 
     <script src="${pageContext.request.contextPath }/resources/dist/js/pages/mask/mask.init.js"></script>
+    <!-- 에디터 -->
     <script src="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.min.js"></script>
+    
+     

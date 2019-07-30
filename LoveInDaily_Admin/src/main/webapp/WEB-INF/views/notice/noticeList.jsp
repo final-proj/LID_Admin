@@ -111,6 +111,9 @@
 								<c:forEach items="${list }" var="n">
 								<form id="${n.nno }">
 									<div class="d-flex flex-row comment-row m-t-0" id="${n.nno }">
+									<div class="p-2">
+										<img src="${pageContext.request.contextPath }/resources/assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle">
+									</div>
 										<div class="comment-text w-100">
 											<h6 class="font-medium">제목 : ${n.nTitle }</h6>
 											<span class="m-b-15 d-block">작성자 : ${n.adminId }</span>
