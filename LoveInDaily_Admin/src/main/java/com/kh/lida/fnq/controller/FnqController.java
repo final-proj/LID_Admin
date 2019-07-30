@@ -31,7 +31,7 @@ public class FnqController {
 		// 2. 전체 페이지 게시글 수 가져오기
 		int totalContents = fnqServie.selectFnqTotalContents();
 
-		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "noticeList.do");
+		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "fnqList.do");
 
 		model.addAttribute("list", list).addAttribute("totalContents", totalContents).addAttribute("numPerPage", limit)
 				.addAttribute("pageBar", pageBar);

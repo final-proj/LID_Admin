@@ -56,7 +56,13 @@
 							$('#category3').prop('selected',true);
 						}
 						$('#title').val(data.fTitle);
+						$('.ql-toolbar').remove();
+						$('#editor').remove();
+						$('#removeEditor').append("<div id='editor' style='height: 332px;'></div>");
 						$('#editor').html(data.fContent);
+						new Quill('#editor', {
+					  		theme: 'snow'
+					    });
 						$('#fno').val(fno);
 					},
 					error : function(error){
@@ -221,7 +227,7 @@
 									<div class="form-group row">
 										<label for="cono1"
 											class="col-sm-3 text-right control-label col-form-label">Contents</label>
-										<div class="col-sm-9">
+										<div class="col-sm-9" id="removeEditor">
 											<div id="editor" style="height: 332px;"></div>
 											<textarea name="fContent" style="display: none"
 												id="hiddenArea"></textarea>
@@ -280,6 +286,7 @@
 	
 	<c:import url="../common/footer.jsp" />
 	<script>
+	
 	var quill2 = new Quill('#editor2', {
         theme: 'snow'
     });
