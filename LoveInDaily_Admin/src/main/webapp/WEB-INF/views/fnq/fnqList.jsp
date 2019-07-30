@@ -13,16 +13,20 @@
 #btn{
 	margin-left: 69%;
 }
+#btn1{
+	position: relative;
+	left: 85%;
+}
 #ff{
 	margin-right: 15%;
-}
-#test3{
-	position: relative;
-	right: 29%;
 }
 #test2{
 	position: absolute;
 	left: 92%;
+}
+#test3{
+	position: relative;
+	right: 29%;
 }
 #test4{
 	position: absolute;
@@ -42,16 +46,14 @@
 					type : "POST",
 					dataType : "json",
 					success : function(data){
-						console.log(data.fTitle);
-						console.log(data.fCategory);
 						if(data.fCategory == 1) {
-							$('#category').val("결제 문의");
+							$('#category1').prop('selected',true);
 						}
 						if(data.fCategory == 2) {
-							$('#category').val("환불 문의");
+							$('#category2').prop('selected',true);
 						}
 						if(data.fCategory == 3) {
-							$('#category').val("이용 문의");
+							$('#category3').prop('selected',true);
 						}
 						$('#title').val(data.fTitle);
 						$('#editor').html(data.fContent);
@@ -64,6 +66,33 @@
 			});
 		});
 	});
+	
+/* 	$(function(){
+		$('#searchC').each(function(){
+			$(this).on('click', function(){
+				var fCategory = $(this).attr("val");
+				
+				$.ajax({
+					url : "${pageContext.request.contextPath}/fnq/fnqCategory.do",
+					data : {fCategory : fCategory},
+					type : "POST",
+					dataType : "json",
+					success : function(data){
+						var str = "";
+						$each(data,function(i,v){
+							str += "<form id=" + v.fno + ">";
+							str += "<div class='d-flex flex-row comment-row m-t-0' id=" + v.fno + ">";
+						})
+						
+					},
+					error : function(error){
+						console.log(error);
+					}
+				})
+			})
+		})
+		
+	}) */
 
 	function fn_delete(){
 		var fno = $('#fno').val();
@@ -116,17 +145,17 @@
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<!-- /btn-group -->
-									
-									<div class="btn-group">
+									<div class="btn-group" id="btn1">
 										<select class="btn btn-outline-info dropdown-toggle btn-sm"
 												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												
-											<option class="dropdown-item" value="0">ALL</option>
-											<option class="dropdown-item" value="1">결제 문의</option>
-											<option class="dropdown-item" value="2">환불 문의</option> 
-											<option class="dropdown-item" value="3">이용 문의</option>
+											<option id="searchC" class="dropdown-item" value="0">ALL</option>
+											<option id="searchC" class="dropdown-item" value="1">결제 문의</option>
+											<option id="searchC" class="dropdown-item" value="2">환불 문의</option> 
+											<option id="searchC" class="dropdown-item" value="3">이용 문의</option>
 										</select>
 									</div>
+									
 								</h4>
 
 							</div>
@@ -178,13 +207,13 @@
 											class="col-sm-3 text-right control-label col-form-label">Category</label>
 										<div class="col-sm-9">
 											<div class="btn-group">
-												<select style="width: 350px;"
+												<select style="width: 300%;"
 													class="btn btn-outline-info dropdown-toggle"
 													data-toggle="dropdown" aria-haspopup="true"
 													aria-expanded="false" name="fCategory" id="category">
-													<option class="dropdown-item" value="1">결제 문의</option>
-													<option class="dropdown-item" value="2">환불 문의</option> 
-													<option class="dropdown-item" value="3">이용 문의</option>
+													<option id="category1" class="dropdown-item" value="1">결제 문의</option>
+													<option id="category2" class="dropdown-item" value="2">환불 문의</option> 
+													<option id="category3" class="dropdown-item" value="3">이용 문의</option>
 												</select>
 											</div>
 										</div>
@@ -193,7 +222,7 @@
 										<label for="cono1"
 											class="col-sm-3 text-right control-label col-form-label">Contents</label>
 										<div class="col-sm-9">
-											<div id="editor" style="height: 307px;"></div>
+											<div id="editor" style="height: 332px;"></div>
 											<textarea name="fContent" style="display: none"
 												id="hiddenArea"></textarea>
 										</div>
