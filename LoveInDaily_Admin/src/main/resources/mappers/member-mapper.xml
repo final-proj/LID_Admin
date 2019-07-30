@@ -10,7 +10,7 @@
 	<select id="selectMemberProfile" resultType="memPro">
 		SELECT * FROM MEMBER_PROFILE WHERE MNO = #{mNo}
 	</select>
-	<select id="selectMemberProfile" resultType="memProImg">
+	<select id="selectMemberProfileImg" resultType="memProImg">
 		SELECT * FROM MEMBER_PROFILE_IMG WHERE MNO = #{mNo}
 	</select>
 
