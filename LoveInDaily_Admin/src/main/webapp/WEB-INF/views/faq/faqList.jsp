@@ -41,7 +41,7 @@
 				console.log("fno : " + fno);
 				
 				$.ajax({
-					url : "${pageContext.request.contextPath}/fnq/fnqView.do",
+					url : "${pageContext.request.contextPath}/faq/faqView.do",
 					data : {fno : fno},
 					type : "POST",
 					dataType : "json",
@@ -58,9 +58,15 @@
 						$('#title').val(data.fTitle);
 						$('.ql-toolbar').remove();
 						$('#editor').remove();
+						$('#editor2').remove();
 						$('#removeEditor').append("<div id='editor' style='height: 332px;'></div>");
+						$('#removeEditor2').append("<div id='editor2' style='height: 300px;'></div>");
 						$('#editor').html(data.fContent);
 						new Quill('#editor', {
+					  		theme: 'snow'
+					    });
+						
+						new Quill('#editor2', {
 					  		theme: 'snow'
 					    });
 						$('#fno').val(fno);
@@ -103,7 +109,7 @@
 	function fn_delete(){
 		var fno = $('#fno').val();
 		console.log(fno);
-		location.href="${pageContext.request.contextPath}/fnq/fnqDelete.do?fno="+fno;
+		location.href="${pageContext.request.contextPath}/faq/faqDelete.do?fno="+fno;
 	}
 
 </script>
@@ -123,12 +129,12 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-12 d-flex no-block align-items-center">
-						<h4 class="page-title">FNQ</h4>
+						<h4 class="page-title">FAQ</h4>
 						<div class="ml-auto text-right">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">FNQ</li>
+									<li class="breadcrumb-item active" aria-current="page">FAQ</li>
 								</ol>
 							</nav>
 						</div>
@@ -195,7 +201,7 @@
 					<div class="col-md-6">
 						<div class="card">
 							<form class="form-horizontal" id="update"
-								action="${pageContext.request.contextPath}/fnq/fnqUpdate.do" method="post">
+								action="${pageContext.request.contextPath}/faq/faqUpdate.do" method="post">
 								<div class="card-body" id="ff">
 									<h4 class="card-title"></h4>
 									<input id="fno" type="hidden" name="fno">
@@ -248,7 +254,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form id="insert" action="${pageContext.request.contextPath}/fnq/fnqInsert.do" method="post">
+                                <form id="insert" action="${pageContext.request.contextPath}/faq/faqInsert.do" method="post">
                                 <h4 class="card-title">
                                 	Insert FNQ
                                 </h4>
@@ -272,9 +278,10 @@
                                         <input type="text" data-toggle="tooltip" title="A Tooltip for the input !" class="form-control" id="validationDefault05" placeholder="Hover For tooltip" name="fTitle" required>
                                     </div>
                                 </div>
-                                <div id="editor2" style="height: 300px;">
-                                </div>
-									<textarea name="fContent" style="display:none" id="hiddenArea2"></textarea>
+                                	<div id="removeEditor2">
+                                		<div id="editor2" style="height: 300px;"></div>
+										<textarea name="fContent" style="display:none" id="hiddenArea2"></textarea>
+									</div>
                                 </form>
                             </div>
                         </div>

@@ -31,9 +31,9 @@
 						class="hide-menu">Notice</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/fnq/fnqList.do"
+					href="${pageContext.request.contextPath }/faq/faqList.do"
 					aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-						class="hide-menu">FNQ</span></a></li>
+						class="hide-menu">FAQ</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath }/views/Chart/grid.jsp"

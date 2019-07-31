@@ -1,4 +1,4 @@
-package com.kh.lida.fnq.controller;
+package com.kh.lida.faq.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.lida.common.util.Utils;
-import com.kh.lida.fnq.model.service.FnqService;
-import com.kh.lida.fnq.model.vo.Fnq;
+import com.kh.lida.faq.model.service.FaqService;
+import com.kh.lida.faq.model.vo.Faq;
 
 @Controller
-public class FnqController {
+public class FaqController {
 
 	@Autowired
-	FnqService fnqServie;
+	FaqService faqServie;
 	
-	@RequestMapping("/fnq/fnqList.do")
-	public String selectFnqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model) {
+	@RequestMapping("/faq/faqList.do")
+	public String selectFaqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model) {
 		int limit = 6; // 한 페이지 당 게시글 수
 
 		// 1. 현재 페이지 게시글 목록 가져오기
-		ArrayList<Map<String, String>> list = new ArrayList<>(fnqServie.selectFnqList(cPage, limit));
+		ArrayList<Map<String, String>> list = new ArrayList<>(faqServie.selectFaqList(cPage, limit));
 		// 2. 전체 페이지 게시글 수 가져오기
-		int totalContents = fnqServie.selectFnqTotalContents();
+		int totalContents = faqServie.selectFaqTotalContents();
 
 		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "fnqList.do");
 
 		model.addAttribute("list", list).addAttribute("totalContents", totalContents).addAttribute("numPerPage", limit)
 				.addAttribute("pageBar", pageBar);
 
-		return "fnq/fnqList";
+		return "faq/faqList";
 	}
 	
-	@RequestMapping("/fnq/fnqInsert.do")
-	public String insertFnq(Fnq f, Model model) {
+	@RequestMapping("/faq/faqInsert.do")
+	public String insertFaq(Faq f, Model model) {
 		System.out.println(f.getfCategory());
 		System.out.println(f);
-		int result = fnqServie.insertFnq(f);
+		int result = faqServie.insertFaq(f);
 		
-		String loc = "/fnq/fnqList.do";
+		String loc = "/faq/faqList.do";
 		String msg = "";
 		
 		if(result > 0) msg = "등록 성공";
@@ -56,11 +56,11 @@ public class FnqController {
 		return "common/msg";
 	}
 	
-	@RequestMapping("/fnq/fnqUpdate.do")
-	public String updateFnq(Fnq f, Model model) {
-		int result = fnqServie.updateFnq(f);
+	@RequestMapping("/faq/faqUpdate.do")
+	public String updateFaq(Faq f, Model model) {
+		int result = faqServie.updateFaq(f);
 		
-		String loc = "/fnq/fnqList.do";
+		String loc = "/faq/faqList.do";
 		String msg = "";
 		
 		if(result > 0) msg = "수정 성공";
@@ -71,19 +71,19 @@ public class FnqController {
 		return "common/msg";
 	}
 	
-	@RequestMapping(value = "/fnq/fnqView.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/faq/faqView.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Fnq selectOneFnq(@RequestParam int fno) {
-		Fnq f = fnqServie.selectOneFnq(fno);
+	public Faq selectOneFaq(@RequestParam int fno) {
+		Faq f = faqServie.selectOneFaq(fno);
 		
 		return f;
 	}
 	
-	@RequestMapping("/fnq/fnqDelete.do")
-	public String deleteFnq(@RequestParam int fno, Model model) {
-		int result = fnqServie.deleteFnq(fno);
+	@RequestMapping("/faq/faqDelete.do")
+	public String deleteFaq(@RequestParam int fno, Model model) {
+		int result = faqServie.deleteFaq(fno);
 		
-		String loc = "/fnq/fnqList.do";
+		String loc = "/faq/faqList.do";
 		String msg = "";
 		
 		if(result > 0) msg = "삭제 성공";
