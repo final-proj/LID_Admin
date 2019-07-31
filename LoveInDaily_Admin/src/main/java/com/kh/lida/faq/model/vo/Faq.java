@@ -1,11 +1,11 @@
-package com.kh.lida.fnq.model.vo;
+package com.kh.lida.faq.model.vo;
 
 import java.io.Serializable;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Fnq implements Serializable {
+public class Faq implements Serializable {
 
 	/**
 	 * 
@@ -17,12 +17,12 @@ public class Fnq implements Serializable {
 	private String fContent;
 	private String fCategory;
 	
-	public Fnq() {
+	public Faq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Fnq(int fno, String fTitle, String fWriter, String fContent, String fCategory) {
+	public Faq(int fno, String fTitle, String fWriter, String fContent, String fCategory) {
 		super();
 		this.fno = fno;
 		this.fTitle = fTitle;

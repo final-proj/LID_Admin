@@ -1,4 +1,4 @@
-package com.kh.lida.fnq.model.dao;
+package com.kh.lida.faq.model.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -8,10 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.lida.fnq.model.vo.Fnq;
+import com.kh.lida.faq.model.vo.Faq;
 
 @Repository
-public class FnqDaoImpl implements FnqDao{
+public class FaqDaoImpl implements FaqDao{
 
 	@Autowired
 	SqlSession sqlSession;
@@ -19,37 +19,37 @@ public class FnqDaoImpl implements FnqDao{
 	@Override
 	public List<Map<String, String>> selectFnqList(int cPage, int limit) {
 		RowBounds rows = new RowBounds((cPage -1) * limit, limit);
-		return sqlSession.selectList("fnq.selectFnqList", null, rows);
+		return sqlSession.selectList("faq.selectFaqList", null, rows);
 	}
 
 	@Override
-	public Fnq selectOneFnq(int fno) {
+	public Faq selectOneFaq(int fno) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("fnq.selectOneFnq", fno);
+		return sqlSession.selectOne("faq.selectOneFaq", fno);
 	}
 
 	@Override
-	public int insertFnq(Fnq f) {
+	public int insertFaq(Faq f) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("fnq.insertFnq", f);
+		return sqlSession.insert("faq.insertFaq", f);
 	}
 
 	@Override
-	public int updateFnq(Fnq f) {
+	public int updateFaq(Faq f) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("fnq.updateFnq", f);
+		return sqlSession.update("faq.updateFaq", f);
 	}
 
 	@Override
-	public int deleteFnq(int fno) {
+	public int deleteFaq(int fno) {
 		// TODO Auto-generated method stub
-		return sqlSession.delete("fnq.deleteFnq", fno);
+		return sqlSession.delete("faq.deleteFaq", fno);
 	}
 
 	@Override
-	public int selectFnqTotalContents() {
+	public int selectFaqTotalContents() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("fnq.selectFnqTotalContents");
+		return sqlSession.selectOne("faq.selectFaqTotalContents");
 	}
 
 }

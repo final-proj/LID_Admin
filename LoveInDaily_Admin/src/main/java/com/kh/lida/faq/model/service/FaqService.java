@@ -1,52 +1,52 @@
-package com.kh.lida.fnq.model.service;
+package com.kh.lida.faq.model.service;
 
 import java.util.List;
 import java.util.Map;
 
-import com.kh.lida.fnq.model.vo.Fnq;
+import com.kh.lida.faq.model.vo.Faq;
 
-public interface FnqService {
+public interface FaqService {
 	
 	/**
-	 * FNQ 목록 조회
+	 * FAQ 목록 조회
 	 * @param limit 
 	 * @param cPage 
 	 * @return
 	 */
-	List<Map<String, String>> selectFnqList(int cPage, int limit);
+	List<Map<String, String>> selectFaqList(int cPage, int limit);
 	
 	/**
-	 * FNQ 조회
+	 * FAQ 조회
 	 * @param fno
 	 * @return
 	 */
-	Fnq selectOneFnq(int fno);
+	Faq selectOneFaq(int fno);
 	
 	/**
-	 * FNQ 추가
+	 * FAQ 추가
 	 * @param f
 	 * @return
 	 */
-	int insertFnq(Fnq f);
+	int insertFaq(Faq f);
 	
 	/**
 	 * FNQ 수정
 	 * @param f
 	 * @return
 	 */
-	int updateFnq(Fnq f);
+	int updateFaq(Faq f);
 	
 	/**
 	 * FNQ 삭제
 	 * @param fno
 	 * @return
 	 */
-	int deleteFnq(int fno);
+	int deleteFaq(int fno);
 
 	/**
 	 * FNQ 전체 페이지 조회
 	 * @return
 	 */
-	int selectFnqTotalContents();
+	int selectFaqTotalContents();
 	
 }
