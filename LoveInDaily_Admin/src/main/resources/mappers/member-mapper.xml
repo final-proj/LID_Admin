@@ -13,7 +13,15 @@
 	<select id="selectMemberProfileImg" resultType="memProImg">
 		SELECT * FROM MEMBER_PROFILE_IMG WHERE MNO = #{mNo}
 	</select>
-
+	<select id="selectListReport" resultType="report">
+		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT 
+	</select>
+	<select id="selectReportTotalContents" resultType="_int">
+		SELECT COUNT(*) FROM REPORT
+	</select>
+	<select id="selectOneReport"  parameterType="_int" resultType="report">
+		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT WHERE RNO = #{rno}
+	</select>
 	<update id="mmDisable" parameterType="_int">
 		UPDATE MEMBER SET MLEVEL =
 		'정지' WHERE MNO = #{mNo}
