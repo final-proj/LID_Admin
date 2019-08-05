@@ -11,6 +11,7 @@
 		<typeAlias type="com.kh.lida.notice.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.kh.lida.fnq.model.vo.Fnq" alias="fnq"/>
 		<typeAlias type="com.kh.lida.faq.model.vo.Faq" alias="faq"/>
+		<typeAlias type="com.kh.lida.sales.model.vo.Sales" alias="sales"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfile" alias="memPro"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfileImg" alias="memProImg"/>
