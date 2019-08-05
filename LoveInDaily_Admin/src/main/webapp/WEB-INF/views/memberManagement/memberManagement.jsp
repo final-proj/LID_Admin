@@ -56,8 +56,6 @@
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title" style="margin-left:10px;">회원 리스트</h5>
-								<div  style="float:right;  margin-right:10px;"><input type="checkbox" name="report" id="report"/>신고 회원만 보기
-									</div>
 								<div class="table-responsive">
 									
 									
@@ -72,8 +70,8 @@
 												<th>연락처</th>
 												<th>가입일</th>
 												<th>회원상태</th>
-												<!-- <th>신고</th> -->
 												<th>프로필 확인</th>
+												<th>신고</th>
 
 											</tr>
 										</thead>
@@ -92,6 +90,7 @@
 															<i class="mdi mdi-account-check"></i> 프로필 확인
 														</button>
 													</td>
+													<td></td>
 												</tr>
 											</c:forEach>
 									</table>
@@ -115,11 +114,36 @@
 		$(function(){
 			<c:forEach items="${reportList}" var="r">
 				<c:forEach items="${memList}" var="m">
-				if("${r.rMemberName}" == "${m.mName}") $('#${m.mNo}').css("background","red").css("color","white");
+				if("${r.rMemberName}" == "${m.mName}"){
+					$('#${m.mNo}').css("background","red").css("color","white");
+					$('#${m.mNo} td').eq(5).text("신고");
+				}
 				</c:forEach>
 			</c:forEach>
 		});
-	</script>	
+	</script>
+	<script>
+		$(function(){
+			$("#zero_config td").click(function(){
+				
+				var mNo = $(this).parent().children().eq(0).text();
+				
+				location.href="<%=request.getContextPath()%>/memberManagement/memberReport.do?mNo=" + mNo;
+				
+			});
+		});
+	</script>
+	<script>
+	$("#report").change(function(){
+		if($('#report').is(":checked")){
+			$('#zero_config > tbody:last').empty();
+		} else{
+			
+		}
+	});
+	</script>
+	
+		
 	<c:import url="../common/footer.jsp" />
 </body>
 </html>

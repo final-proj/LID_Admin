@@ -1,5 +1,6 @@
 package com.kh.lida.memberManagement.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,6 @@ import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 import com.kh.lida.memberManagement.model.vo.Report;
-import com.kh.lida.notice.model.vo.Notice;
 
 public interface MemberManagementDao {
 
@@ -22,6 +22,9 @@ public interface MemberManagementDao {
 	 * @return
 	 */
 	int mmDisable(int mNo);
+	
+	int mmPayment(Map map);
+	
 	
 	/**
 	 * 회원 정지 해제를 위한 메소드
@@ -60,7 +63,9 @@ public interface MemberManagementDao {
 	 * @param limit
 	 * @return
 	 */
-	List<Map<String, String>> selectReportList(int cPage, int limit);
+	List<Map<String, String>> selectReportList(int cPage, int limit, int mNo);
+	
+	List<Report> selectAllListReport();
 	
 	
 	/**
@@ -75,5 +80,7 @@ public interface MemberManagementDao {
 	 * @return
 	 */
 	Report selectOneReport(int rno);
+	
+	Member selectOneMember(int mNo);
 	
 }
