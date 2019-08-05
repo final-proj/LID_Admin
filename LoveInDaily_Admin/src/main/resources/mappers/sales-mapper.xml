@@ -4,6 +4,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sales">
 	<select id="salesTicketChart" resultType="sales">
-		SELECT COUNT(*) AS TICKET, DECODE(PTICID, 1, '1일권', 2, '1개월', 3, '3개월', 4, '6개월', '1년') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH FROM PAYMENT WHERE EXTRACT(MONTH FROM PDATE) = TO_CHAR(SYSDATE, 'MM') GROUP BY PTICID
+		SELECT COUNT(*) AS AMOUNT, DECODE(PTICID, 1, '1일권', 2, '1개월', 3, '3개월', 4, '6개월', '1년') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH FROM PAYMENT WHERE EXTRACT(MONTH FROM PDATE) = TO_CHAR(SYSDATE, 'MM') GROUP BY PTICID
+	</select>
+	<select id="salesTotalChart" resultType="sales">
+		SELECT SUM(DECODE(PTICID, 1, 5000, 2, 36000, 3, 91800, 4, 135000, 179000)) AS AMOUNT, TO_CHAR(PDATE, 'MM') AS MONTH, TO_CHAR(SYSDATE, 'YYYY') AS ITEM FROM PAYMENT GROUP BY TO_CHAR(PDATE, 'MM') ORDER BY MONTH
 	</select>
 </mapper>

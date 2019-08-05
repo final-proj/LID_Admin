@@ -20,4 +20,17 @@ public class SalesServiceImpl implements SalesService {
 		return salesDao.regularTicketChart();
 	}
 
+	@Override
+	public List<Sales> ageChart() {
+		// TODO Auto-generated method stub
+		return null;
+//		return salesDao.ageTicketChart();
+	}
+
+	@Override
+	public List<Sales> totalChart() {
+		// TODO Auto-generated method stub
+		return salesDao.totalChart();
+	}
+
 }

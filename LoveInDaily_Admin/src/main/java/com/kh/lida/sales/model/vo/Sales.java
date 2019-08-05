@@ -10,18 +10,17 @@ public class Sales implements Serializable {
 	private static final long serialVersionUID = 1442038071908173020L;
 	
 	private String item;
-    private int ticket;
+    private int amount;
     private int month;
-    
 	public Sales() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Sales(String item, int ticket, int month) {
+	
+	public Sales(String item, int amount, int month) {
 		super();
 		this.item = item;
-		this.ticket = ticket;
+		this.amount = amount;
 		this.month = month;
 	}
 
@@ -29,16 +28,16 @@ public class Sales implements Serializable {
 		return item;
 	}
 
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
 	public void setItem(String item) {
 		this.item = item;
-	}
-
-	public int getTicket() {
-		return ticket;
-	}
-
-	public void setTicket(int ticket) {
-		this.ticket = ticket;
 	}
 
 	public int getMonth() {
@@ -51,7 +50,7 @@ public class Sales implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Sales [item=" + item + ", ticket=" + ticket + ", month=" + month + "]";
+		return "Sales [item=" + item + ", amount=" + amount + ", month=" + month + "]";
 	}
 
 }
