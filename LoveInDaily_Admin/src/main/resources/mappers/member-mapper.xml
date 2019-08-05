@@ -13,12 +13,6 @@
 	<select id="selectMemberProfileImg" resultType="memProImg">
 		SELECT * FROM MEMBER_PROFILE_IMG WHERE MNO = #{mNo}
 	</select>
-	<select id="selectMemberProfile" resultType="memPro">
-		SELECT * FROM MEMBER_PROFILE WHERE MNO = #{mNo}
-	</select>
-	<select id="selectMemberProfileImg" resultType="memProImg">
-		SELECT * FROM MEMBER_PROFILE_IMG WHERE MNO = #{mNo}
-	</select>
 	<select id="selectListReport" resultType="report">
 		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT 
 	</select>
