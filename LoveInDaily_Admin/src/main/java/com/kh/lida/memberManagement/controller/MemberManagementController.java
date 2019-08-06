@@ -22,6 +22,7 @@ import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
+import net.sf.json.JSON;
 
 @Controller
 public class MemberManagementController {
@@ -29,11 +30,6 @@ public class MemberManagementController {
 	@Autowired
 	MemberManagementService memberManagementService;
 
-
-	  
-
-	
-	
 	  @RequestMapping("/memberManagement/mmForm.do")
 	  public String mmForm(Model model) {
 	  
