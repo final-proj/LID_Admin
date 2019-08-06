@@ -39,7 +39,7 @@
 					dataType : "json",
 					success : function(data){
 						console.log(data.nTitle);
-						$('#writer').val(data.adminId);
+						$('#writer').val(data.nWriter);
 						$('#title').val(data.nTitle);
 						$('#editor').html(data.nContent);
 						$('#nno').val(nno);
@@ -116,7 +116,7 @@
 									</div>
 										<div class="comment-text w-100">
 											<h6 class="font-medium">제목 : ${n.nTitle }</h6>
-											<span class="m-b-15 d-block">작성자 : ${n.adminId }</span>
+											<span class="m-b-15 d-block">작성자 : ${n.nWriter }</span>
 											<div class="comment-footer">
 												<span class="text-muted float-right">${n.nDate }</span>
 											</div>
@@ -176,7 +176,7 @@
                                 </h4>
                                 	<button type="submit" class="btn btn-success" id="test2">Submit</button>
                                 <!-- Create the editor container -->
-                	                <input type="hidden" name="adminId" value="admin" required>
+                	                <input type="hidden" name="nWriter" value="admin" required>
                                 <div class="row mb-3 align-items-center" id="test3">
                                     <div class="col-lg-4 col-md-12 text-right">
                                         <span>Title</span>
@@ -194,6 +194,10 @@
                     </div>
                 </div>
 			</div>
+			<footer class="footer text-center">
+   All Rights Reserved by Matrix-admin. Designed and Developed by <a
+      href="https://wrappixel.com">WrapPixel</a>.
+</footer>
 		</div>
 	</div>
 	
@@ -211,6 +215,7 @@
 	$('#update').on('submit',function(e){
 		$("#hiddenArea").text($("#editor").html());
 	})
+	
 	</script>
 </body>
 </html>

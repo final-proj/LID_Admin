@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="insertNotice" >
-		INSERT INTO NOTICE VALUES(SEQ_NOTICE.NEXTVAL, #{adminId}, #{nTitle}, #{nContent}, DEFAULT, 0)
+		INSERT INTO NOTICE VALUES(SEQ_NOTICE.NEXTVAL, #{nTitle}, #{nContent}, #{nWriter}, DEFAULT)
 	</insert>
 	
 	<update id="updateNotice">

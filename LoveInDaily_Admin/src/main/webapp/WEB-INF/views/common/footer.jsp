@@ -1,15 +1,9 @@
-
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<footer class="footer text-center">
-   All Rights Reserved by Matrix-admin. Designed and Developed by <a
-      href="https://wrappixel.com">WrapPixel</a>.
-</footer>
     <script src="${pageContext.request.contextPath }/resources/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -35,4 +29,6 @@
 
     <script src="${pageContext.request.contextPath }/resources/dist/js/pages/mask/mask.init.js"></script>
     <!-- 에디터 -->
+
+
     <script src="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.min.js"></script>

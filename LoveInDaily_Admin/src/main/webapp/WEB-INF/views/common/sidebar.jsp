@@ -41,7 +41,7 @@
 						class="hide-menu">Chart</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/views/salesmanagement/grid.jsp"
+					href="${pageContext.request.contextPath }/sales/salesChart.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
 						class="hide-menu">Sales management</span></a></li>
 				<li class="sidebar-item"><a

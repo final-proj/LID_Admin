@@ -8,6 +8,9 @@
 	</select>
 	<select id="selectFaqTotalContents" resultType="_int">
 		SELECT COUNT(*) FROM FAQ
+		<if test="fCategory != null">
+		 WHERE FCATEGORY = #{fCategory}
+		</if>
 	</select>
 	
 	<select id="selectOneFaq" parameterType="_int" resultType="faq">
