@@ -79,13 +79,13 @@
 		});
 	});
 	
-/* 	$(function(){
+	/* $(function(){
 		$('#searchC').each(function(){
 			$(this).on('click', function(){
 				var fCategory = $(this).attr("val");
 				
 				$.ajax({
-					url : "${pageContext.request.contextPath}/fnq/fnqCategory.do",
+					url : "${pageContext.request.contextPath}/faq/faqList.do",
 					data : {fCategory : fCategory},
 					type : "POST",
 					dataType : "json",
@@ -104,7 +104,7 @@
 			})
 		})
 		
-	}) */
+	})  */
 
 	function fn_delete(){
 		var fno = $('#fno').val();
@@ -161,7 +161,7 @@
 										<select class="btn btn-outline-info dropdown-toggle btn-sm"
 												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												
-											<option id="searchC" class="dropdown-item" value="0">ALL</option>
+											<option id="searchC" class="dropdown-item">ALL</option>
 											<option id="searchC" class="dropdown-item" value="1">결제 문의</option>
 											<option id="searchC" class="dropdown-item" value="2">환불 문의</option> 
 											<option id="searchC" class="dropdown-item" value="3">이용 문의</option>

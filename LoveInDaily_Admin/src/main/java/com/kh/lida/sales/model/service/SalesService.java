@@ -7,9 +7,20 @@ import com.kh.lida.sales.model.vo.Sales;
 public interface SalesService {
 
 	/**
-	 * 티켓 정기권 비율
+	 * 정기권 구매 비율
 	 * @return
 	 */
 	List<Sales> regularTicketChart();
 	
+	/**
+	 * 연령별 결제 비율
+	 * @return
+	 */
+	List<Sales> ageChart();
+	
+	/**
+	 * 총 매출
+	 * @return
+	 */
+	List<Sales> totalChart();
 }

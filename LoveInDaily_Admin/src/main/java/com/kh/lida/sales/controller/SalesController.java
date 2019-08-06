@@ -24,12 +24,28 @@ public class SalesController {
 	
 	@RequestMapping(value = "/sales/salesData.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Sales> salesData(Model model){
+	public List<Sales> salesData(){
 		List<Sales> list = salesService.regularTicketChart();
 		System.out.println(list);
 		
 		
 		return list;
+	}
+//	@RequestMapping(value = "/sales/salesScdData.do", method = RequestMethod.POST)
+//	@ResponseBody
+//	public List<Sales> salesScdData(Model model){
+//		List<Sales> list2 = salesService.ageTicketChart();
+//		System.out.println(list2);
+//		
+//		return list2;
+//	}
+	
+	@RequestMapping(value = "/sales/salesThdData.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Sales> salesThdData(){
+		List<Sales> list3 = salesService.totalChart();
+		System.out.println(list3);
+		return list3;
 	}
 	
 }
