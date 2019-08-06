@@ -1,5 +1,6 @@
 package com.kh.lida.memberManagement.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,9 +29,26 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	}
 
 	@Override
-	public int mmDisable(int mNo) {
+	public int mmDisable(int mNo, int date) {
 
-		return memberManagementDao.mmDisable(mNo);
+		int result = 0;
+
+		System.out.println("요긴가");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("mNo", mNo);
+		map.put("date", date);
+		
+		result = memberManagementDao.mmDisable(mNo);
+		
+		System.out.println("여기여?");
+		
+		result *= memberManagementDao.mmPayment(map);
+		
+		System.out.println("여여?");
+		
+		return result;
 		
 	}
 
@@ -70,9 +88,9 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	}
 
 	@Override
-	public List<Map<String, String>> selectReportList(int cPage, int limit) {
+	public List<Map<String, String>> selectReportList(int cPage, int limit, int mNo) {
 		// TODO Auto-generated method stub
-		return memberManagementDao.selectReportList(cPage, limit);
+		return memberManagementDao.selectReportList(cPage, limit, mNo);
 	}
 
 	@Override
@@ -86,6 +104,20 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	public Report selectOneReport(int rno) {
 		
 		return memberManagementDao.selectOneReport(rno);
+		
+	}
+
+	@Override
+	public List<Report> selectAllListReport() {
+		
+		return memberManagementDao.selectAllListReport();
+		
+	}
+
+	@Override
+	public Member selectOneMember(int mNo) {
+
+		return memberManagementDao.selectOneMember(mNo);
 		
 	}
 	

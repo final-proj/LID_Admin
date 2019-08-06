@@ -1,5 +1,6 @@
 package com.kh.lida.memberManagement.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +34,15 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 		return sqlSession.update("member.mmDisable", mNo);
 		
 	}
+	
+	@Override
+	public int mmPayment(Map map) {
+
+		return sqlSession.update("member.mmPayment", map);
+		
+	}
+	
+	
 
 	@Override
 	public int mmAble(int mNo) {
@@ -70,9 +80,9 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	}
 
 	@Override
-	public List<Map<String, String>> selectReportList(int cPage, int limit) {
+	public List<Map<String, String>> selectReportList(int cPage, int limit, int mNo) {
 		RowBounds rows = new RowBounds((cPage -1) * limit, limit);
-		return sqlSession.selectList("member.selectListReport", null, rows);
+		return sqlSession.selectList("member.selectListReport", mNo , rows);
 		
 	}
 
@@ -89,6 +99,22 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 		return sqlSession.selectOne("member.selectOneReport", rno); 
 		
 	}
+
+	@Override
+	public List<Report> selectAllListReport() {
+
+		return sqlSession.selectList("member.selectAllListReport");
+		
+	}
+
+	@Override
+	public Member selectOneMember(int mNo) {
+		
+		return sqlSession.selectOne("member.selectOneMember",mNo);
+		
+	}
+
+	
 	
 	
 	

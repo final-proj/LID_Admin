@@ -27,10 +27,12 @@
     
     <link rel="stylesheet" type="text/css" href="${path}/resources/assets/extra-libs/multicheck/multicheck.css">
     <link href="${path}/resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="${path}/resources/dist/css/style.min.css" rel="stylesheet">
+    
     
 
    <script src="${path}/resources/js/jquery-3.4.1.min.js"></script>
    <script src="${path}/resources/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
    <script src="${path}/resources/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
    <script src="${path}/resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+
+    

@@ -21,7 +21,7 @@ public interface MemberManagementService {
 	 * 회원 정지를 위한 메소드 
 	 * @return
 	 */
-	int mmDisable(int mNo);
+	int mmDisable(int mNo, int date);
 	
 	/**
 	 * 회원 정지 해제를 위한 메소드
@@ -53,13 +53,15 @@ public interface MemberManagementService {
 	 */
 	List<Report> selectListReport();
 	
+	List<Report> selectAllListReport();
+	
 	/**
 	 * 개별 신고 리스트 조회
 	 * @param cPage
 	 * @param limit
 	 * @return
 	 */
-	List<Map<String, String>> selectReportList(int cPage, int limit);
+	List<Map<String, String>> selectReportList(int cPage, int limit, int mNo);
 	
 	/**
 	 * 페이징 처리를 위한 총 페이지 갯수
@@ -74,5 +76,6 @@ public interface MemberManagementService {
 	 */
 	Report selectOneReport(int rno);
 	
+	Member selectOneMember(int mNo);
 	
 }
