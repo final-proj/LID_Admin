@@ -15,6 +15,7 @@
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfile" alias="memPro"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfileImg" alias="memProImg"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.Report" alias="report"/>
+		<typeAlias type="com.kh.lida.admin.model.vo.Admin" alias="admin"/>
 	</typeAliases>
 	
 	<!-- 어느 부분에 typeHandler를 적용할 것인지 패키지 영역을 설정한다. -->

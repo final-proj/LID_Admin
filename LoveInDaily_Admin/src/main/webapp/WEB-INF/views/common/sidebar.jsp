@@ -31,12 +31,12 @@
 						class="hide-menu">Notice</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/fnq/fnqList.do"
+					href="${pageContext.request.contextPath }/faq/faqList.do"
 					aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-						class="hide-menu">FNQ</span></a></li>
+						class="hide-menu">FAQ</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/memberManagement/memberReport.do"
+					href="${pageContext.request.contextPath }/memberManagement/mmChart.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
 						class="hide-menu">Chart</span></a></li>
 				<li class="sidebar-item"><a
@@ -44,6 +44,11 @@
 					href="${pageContext.request.contextPath }/sales/salesChart.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
 						class="hide-menu">Sales management</span></a></li>
+				<li class="sidebar-item"><a
+					class="sidebar-link waves-effect waves-dark sidebar-link"
+					href="${pageContext.request.contextPath }/admin/insertAdmin.do"
+					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+						class="hide-menu">Admin Create</span></a></li>		
 
 			</ul>
 		</nav>

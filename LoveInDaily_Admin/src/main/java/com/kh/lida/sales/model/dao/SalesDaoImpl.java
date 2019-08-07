@@ -20,16 +20,20 @@ public class SalesDaoImpl implements SalesDao {
 	}
 
 	@Override
-	public List<Sales> agetChart() {
-		// TODO Auto-generated method stub
-		return null;
-		//		return sqlSession.selectList("sales.salesAgeChart");
+	public List<Sales> ageChart() {
+		return sqlSession.selectList("sales.salesAgeChart");
 	}
 
 	@Override
 	public List<Sales> totalChart() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("sales.salesTotalChart");
+	}
+
+	@Override
+	public List<Sales> regularTicketMonthChart(int element) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("sales.salesTicketMonthChart", element);
 	}
 
 }

@@ -66,7 +66,7 @@ public class NoticeController {
 		return n;
 	}
 
-	@RequestMapping("/notice/noticeUpdate")
+	@RequestMapping("/notice/noticeUpdate.do")
 	public String noticeUpdate(Notice n, Model model) {
 		
 		int result = noticeService.updateNotice(n);

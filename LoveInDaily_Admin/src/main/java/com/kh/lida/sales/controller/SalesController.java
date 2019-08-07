@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.lida.sales.model.service.SalesService;
@@ -26,26 +27,29 @@ public class SalesController {
 	@ResponseBody
 	public List<Sales> salesData(){
 		List<Sales> list = salesService.regularTicketChart();
-		System.out.println(list);
-		
-		
 		return list;
 	}
-//	@RequestMapping(value = "/sales/salesScdData.do", method = RequestMethod.POST)
-//	@ResponseBody
-//	public List<Sales> salesScdData(Model model){
-//		List<Sales> list2 = salesService.ageTicketChart();
-//		System.out.println(list2);
-//		
-//		return list2;
-//	}
+	
+	  @RequestMapping(value = "/sales/salesScdData.do", method =RequestMethod.POST)
+	  @ResponseBody public List<Sales> salesScdData(){ 
+		List<Sales> list2 = salesService.ageChart();
+	  	System.out.println(list2);
+	  	return list2; 
+	  }
+	 
 	
 	@RequestMapping(value = "/sales/salesThdData.do", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Sales> salesThdData(){
 		List<Sales> list3 = salesService.totalChart();
-		System.out.println(list3);
 		return list3;
 	}
 	
+	@RequestMapping(value = "/sales/salesMonthData.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Sales> salesMonthData(@RequestParam int element){
+		List<Sales> list = salesService.regularTicketMonthChart(element);
+		System.out.println(list);
+		return list;
+	}
 }
