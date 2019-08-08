@@ -9,4 +9,7 @@
 	<select id="selectSeq" resultType="_int">
 		SELECT MAX(ANO) FROM ADMIN
 	</select>
+	<select id="selectAdmin" parameterType="string" resultType="admin">
+		SELECT * FROM ADMIN WHERE AID = #{aId}
+	</select>
 </mapper>

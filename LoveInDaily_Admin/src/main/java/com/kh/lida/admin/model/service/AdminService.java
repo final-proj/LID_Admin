@@ -23,6 +23,12 @@ public class AdminService {
 		return adminDao.insertAdmin(a);
 		
 	}
+
+	public Admin selectAdmin(String id) {
+
+		return adminDao.selectAdmin(id);
+		
+	}
 	
 	
 }

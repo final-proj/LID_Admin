@@ -23,6 +23,12 @@ public class AdminDao {
 		return sqlSession.selectOne("admin.selectSeq");
 		
 	}
+
+	public Admin selectAdmin(String id) {
+		
+		return sqlSession.selectOne("admin.selectAdmin", id);
+		
+	}
 	
 	
 }
