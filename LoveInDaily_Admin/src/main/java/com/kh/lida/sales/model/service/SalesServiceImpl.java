@@ -37,4 +37,16 @@ public class SalesServiceImpl implements SalesService {
 		return salesDao.regularTicketMonthChart(element);
 	}
 
+	@Override
+	public List<Sales> ageMonthChart(int element) {
+		System.out.println(salesDao.ageMonthChart(element));
+		return salesDao.ageMonthChart(element);
+	}
+
+	@Override
+	public List<Sales> genderMonthChart(int element) {
+		// TODO Auto-generated method stub
+		return salesDao.genderMonthChart(element);
+	}
+
 }

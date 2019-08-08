@@ -12,4 +12,8 @@ public interface SalesDao {
 	List<Sales> totalChart();
 	
 	List<Sales> regularTicketMonthChart(int element);
+	
+	List<Sales> ageMonthChart(int element);
+	
+	List<Sales> genderMonthChart(int element);
 }

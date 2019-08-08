@@ -118,7 +118,7 @@ $.ajax({
     }
 });
 });
-function chageLangSelect(){
+function changeLangSelect(){
 	var element = $('#month').val();
 	$.ajax({
 		url: '${pageContext.request.contextPath}/sales/salesMonthData.do',
@@ -144,6 +144,36 @@ function chageLangSelect(){
 		           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 		           chart.draw(view, options2);
 	        }
+		}
+	});
+}
+function changeLangSelect2(){
+	var category = $('#selectCa').val();
+	var element = $('#monthScd').val();
+	$.ajax({
+		url: '${pageContext.request.contextPath}/sales/salesMonthCaData.do',
+		data: {category:category, element : element},
+		type : "POST",
+		dataType : "json",
+		success: function(list2){
+			 google.charts.load('current', {'packages':['corechart']});
+		     google.charts.setOnLoadCallback(drawChart2);
+		     function drawChart2() {
+	          var dataChart2 = [['구매 비율', '연령']];
+	          if(list2.length != 0) {
+	                $.each(list2, function(i, item2){
+	                dataChart2.push([item2.item, item2.amount]);
+		              });
+		         }
+		          var data2 = google.visualization.arrayToDataTable(dataChart2);
+		          var view2 = new google.visualization.DataView(data2);
+		          var options2 = {
+		          	width: 542, 
+	            	height: 450,
+	            };
+	            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+		        chart.draw(view2, options2);
+			}
 		}
 	});
 }
@@ -192,7 +222,7 @@ function chageLangSelect(){
 						<div class="card">
 							<div class="card-body">
 							<h5 class="card-title">정기권 구매 비율
-							 <select id="month" onchange="chageLangSelect()">
+							 <select id="month" onchange="changeLangSelect()">
 							</select>
 							</h5>
 								<div id="piechart"></div>
@@ -203,11 +233,11 @@ function chageLangSelect(){
 						<div class="card">
 							<div class="card-body">
 							<h5 class="card-title">
-								<select id="selectCa" onchange="chageLangSelect2()">
+								<select id="selectCa" onchange="changeLangSelect2()">
 									<option value="age">연령대별 결제 비율</option>
 									<option value="gender">성별 결제 비율</option>
 								</select>
-								<select id="monthScd">
+								<select id="monthScd" onchange="changeLangSelect2()">
 							</select>
 							</h5>
 								<div id="piechart2"></div>

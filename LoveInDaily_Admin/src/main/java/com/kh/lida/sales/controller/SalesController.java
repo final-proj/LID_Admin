@@ -49,7 +49,15 @@ public class SalesController {
 	@ResponseBody
 	public List<Sales> salesMonthData(@RequestParam int element){
 		List<Sales> list = salesService.regularTicketMonthChart(element);
-		System.out.println(list);
 		return list;
+	}
+	@RequestMapping(value = "/sales/salesMonthCaData.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Sales> salesMonthCaData(@RequestParam(value = "category") String category, @RequestParam(value = "element") int element){
+		List<Sales> list2 = null;
+		if(category.equals("age")) list2 = salesService.ageMonthChart(element);
+		else list2 = salesService.genderMonthChart(element);
+		
+		return list2;
 	}
 }

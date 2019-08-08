@@ -23,13 +23,14 @@ public class FaqController {
 	FaqService faqServie;
 	
 	@RequestMapping("/faq/faqList.do")
-	public String selectFaqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model) {
+	public String selectFaqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model, @RequestParam(value = "fCategory", required = false) String fCategory) {
 		int limit = 6; // 한 페이지 당 게시글 수
-
+		System.out.println(fCategory);
 		// 1. 현재 페이지 게시글 목록 가져오기
-		ArrayList<Map<String, String>> list = new ArrayList<>(faqServie.selectFaqList(cPage, limit));
+		ArrayList<Map<String, String>> list = new ArrayList<>(faqServie.selectFaqList(cPage, limit, fCategory));
+		System.out.println(list);
 		// 2. 전체 페이지 게시글 수 가져오기
-		int totalContents = faqServie.selectFaqTotalContents();
+		int totalContents = faqServie.selectFaqTotalContents(fCategory);
 
 		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "fnqList.do");
 
