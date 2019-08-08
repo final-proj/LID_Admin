@@ -29,6 +29,4 @@
 
     <script src="${pageContext.request.contextPath }/resources/dist/js/pages/mask/mask.init.js"></script>
     <!-- 에디터 -->
-
-
-    <script src="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/assets/libs/quill/dist/quill.min.js"></script>

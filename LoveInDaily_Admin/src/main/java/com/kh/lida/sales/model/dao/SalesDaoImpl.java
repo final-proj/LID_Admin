@@ -36,4 +36,16 @@ public class SalesDaoImpl implements SalesDao {
 		return sqlSession.selectList("sales.salesTicketMonthChart", element);
 	}
 
+	@Override
+	public List<Sales> ageMonthChart(int element) {
+		System.out.println(sqlSession.selectList("sales.salesAgeMonthChart", element));
+		return sqlSession.selectList("sales.salesAgeMonthChart", element);
+	}
+
+	@Override
+	public List<Sales> genderMonthChart(int element) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("sales.salesGenderMonthChart", element);
+	}
+
 }

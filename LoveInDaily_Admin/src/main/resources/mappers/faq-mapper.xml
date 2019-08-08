@@ -3,13 +3,17 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="faq">
-	<select id="selectFaqList" resultType="faq">
-		SELECT * FROM FAQ ORDER BY FNO DESC
+	<select id="selectFaqList" parameterType="string" resultType="faq">
+		SELECT * FROM FAQ
+		<if test="value != null">
+		 WHERE FCATEGORY = #{value}
+		</if>
+		ORDER BY FNO DESC
 	</select>
-	<select id="selectFaqTotalContents" resultType="_int">
+	<select id="selectFaqTotalContents" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM FAQ
-		<if test="fCategory != null">
-		 WHERE FCATEGORY = #{fCategory}
+		<if test="value != null">
+		 WHERE FCATEGORY = #{value}
 		</if>
 	</select>
 	
