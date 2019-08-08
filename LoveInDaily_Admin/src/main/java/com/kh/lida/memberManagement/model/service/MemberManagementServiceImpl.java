@@ -11,6 +11,7 @@ import com.kh.lida.memberManagement.model.dao.MemberManagementDao;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
+import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
 
@@ -94,9 +95,9 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	}
 
 	@Override
-	public int selectReportTotalContents() {
+	public int selectReportTotalContents(int mNo) {
 
-		return memberManagementDao.selectReportTotalContents();
+		return memberManagementDao.selectReportTotalContents(mNo);
 		
 	}
 
@@ -120,6 +121,14 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 		return memberManagementDao.selectOneMember(mNo);
 		
 	}
+	
+	@Override
+	public List<Payment> selectPayment(int mNo) {
+
+		return memberManagementDao.selectPayment(mNo);
+		
+	}
+	
 	
 	
 	

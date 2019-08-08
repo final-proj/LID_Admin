@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	<insert id="insertAdmin" parameterType="admin">
+		INSERT INTO ADMIN VALUES(SEQ_ADMIN.NEXTVAL, #{aId}, #{aPwd}, SYSDATE)
+	</insert>
+	<select id="selectSeq" resultType="_int">
+		SELECT MAX(ANO) FROM ADMIN
+	</select>
+	<select id="selectAdmin" parameterType="string" resultType="admin">
+		SELECT * FROM ADMIN WHERE AID = #{aId}
+	</select>
+</mapper>

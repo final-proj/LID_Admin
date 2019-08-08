@@ -24,7 +24,18 @@
 	<context:component-scan base-package="com.kh.lida" />
 	
 	<!-- 4. HttpMessageConverter 등록하기 (Spring 5.x.x 버전부터 Jackson2 버전으로 제공) -->
-	<beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	<beans:bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+
+	<!-- 3. @ResponseBody 어노테이션 등록하기 -->
+	<beans:bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jacksonMessageConverter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	<interceptors>
 	<interceptor>
 		<!-- 모든 url 경로에 대해서 수행하도록 등록한다. -->
