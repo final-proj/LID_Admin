@@ -104,8 +104,8 @@
 						<div class="ml-auto text-right">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item"><a href="#">Member
+									<li class="breadcrumb-item"><a href="main.do">Home</a></li>
+									<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/memberManagement/mmForm.do">Member
 											Management</a></li>
 									<li class="breadcrumb-item active" aria-current="page">회원관리</li>
 								</ol>
@@ -125,32 +125,28 @@
 									<label for="fname"
 										class="col-sm-3 text-right control-label col-form-label">이메일</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="fname"
-											>
+										<label for="cono1" class="col-sm-15 text-right control-label col-form-label"">${ member.mEmail }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="lname"
 										class="col-sm-3 text-right control-label col-form-label">이름</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="lname"
-											>
+							<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ member.mName }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="lname"
 										class="col-sm-3 text-right control-label col-form-label">닉네임</label>
 									<div class="col-sm-9">
-										<input type="password" class="form-control" id="lname"
-											>
+										<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ mp.mpNickname }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="email1"
 										class="col-sm-3 text-right control-label col-form-label">나이</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="email1"
-											>
+											<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ mp.mpAge }</label>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -158,38 +154,34 @@
 										class="col-sm-3 text-right control-label col-form-label">성별
 										</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="cono1"
-											>
+											<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ mp.mpGender }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="cono1"
 										class="col-sm-3 text-right control-label col-form-label">전화번호</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="cono1"
-											>
+										<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ member.mPhone }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="cono1" class="col-sm-3 text-right control-label col-form-label">주소</label>
 									<div class="col-sm-9">
-										<label for="cono1" class="col-sm-3 text-right control-label col-form-label">주소</label>
+										<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ mp.mpAddress }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="cono1"
 										class="col-sm-3 text-right control-label col-form-label">회원상태</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="cono1"
-									>
+											<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ member.mLevel }</label>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="cono1"
 										class="col-sm-3 text-right control-label col-form-label">가입일</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="cono1"
-										>
+											<label for="cono1" class="col-sm-15 text-right control-label col-form-label">${ member.mDate }</label>
 									</div>
 								</div>
 							</div>
@@ -237,7 +229,6 @@
 		</div>
 	</div>
 
-	<c:import url="../common/footer.jsp" />
 	<script>
 		function mmDisable(){
 		
@@ -246,9 +237,7 @@
 			var mNo = '${member.mNo}';
 			
 			
-			location.href="<%=request.getContextPath()%>
-		/memberManagement/mmDisable.do?mNo="
-					+ mNo + "&date=" + date;
+			location.href="<%=request.getContextPath()%>/memberManagement/mmDisable.do?mNo="+ mNo + "&date=" + date;
 
 		}
 	</script>
