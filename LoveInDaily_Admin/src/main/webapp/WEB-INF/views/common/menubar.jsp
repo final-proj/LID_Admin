@@ -14,7 +14,7 @@
 			<!-- Logo -->
 			<!-- ============================================================== -->
 			<a class="navbar-brand"
-				href="${pageContext.request.contextPath }/"> <!-- Logo icon -->
+				href="${pageContext.request.contextPath }/main.do"> <!-- Logo icon -->
 				<b class="logo-icon p-l-10"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 					<!-- Dark Logo icon --> <img
 					src="${pageContext.request.contextPath }/resources/assets/images/logoHeart.png"
@@ -166,23 +166,11 @@
 						src="${pageContext.request.contextPath }/resources/assets/images/users/1.jpg"
 						alt="user" class="rounded-circle" width="31"></a>
 					<div class="dropdown-menu dropdown-menu-right user-dd animated">
-						<a class="dropdown-item" href="javascript:void(0)"><i
-							class="ti-user m-r-5 m-l-5"></i> My Profile</a> <a
-							class="dropdown-item" href="javascript:void(0)"><i
-							class="ti-wallet m-r-5 m-l-5"></i> My Balance</a> <a
-							class="dropdown-item" href="javascript:void(0)"><i
-							class="ti-email m-r-5 m-l-5"></i> Inbox</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="javascript:void(0)"><i
-							class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="javascript:void(0)"><i
+						<a class="dropdown-item" href="${pageContext.request.contextPath }/admin/logout.do"><i
 							class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
 						<div class="dropdown-divider"></div>
-						<div class="p-l-30 p-10">
-							<a href="javascript:void(0)"
-								class="btn btn-sm btn-success btn-rounded">View Profile</a>
-						</div>
+						
 					</div></li>
 				<!-- ============================================================== -->
 				<!-- User profile and search -->

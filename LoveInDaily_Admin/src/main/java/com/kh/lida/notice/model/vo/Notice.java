@@ -11,7 +11,7 @@ public class Notice implements Serializable{
 	 */
 	private static final long serialVersionUID = 1220L;
 	private int nno;
-	private String adminId;
+	private String nWriter;
 	private String nTitle;
 	private String nContent;
 	private String nDate;
@@ -22,10 +22,10 @@ public class Notice implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notice(int nno, String adminId, String nTitle, String nContent, String nDate, String nCount) {
+	public Notice(int nno, String nWriter, String nTitle, String nContent, String nDate, String nCount) {
 		super();
 		this.nno = nno;
-		this.adminId = adminId;
+		this.nWriter = nWriter;
 		this.nTitle = nTitle;
 		this.nContent = nContent;
 		this.nDate = nDate;
@@ -40,12 +40,12 @@ public class Notice implements Serializable{
 		this.nno = nno;
 	}
 
-	public String getAdminId() {
-		return adminId;
+	public String getnWriter() {
+		return nWriter;
 	}
 
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
+	public void setnWriter(String nWriter) {
+		this.nWriter = nWriter;
 	}
 
 	public String getnTitle() {
@@ -82,7 +82,7 @@ public class Notice implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Notice [nno=" + nno + ", adminId=" + adminId + ", nTitle=" + nTitle + ", nContent=" + nContent
+		return "Notice [nno=" + nno + ", nWriter=" + nWriter + ", nTitle=" + nTitle + ", nContent=" + nContent
 				+ ", nDate=" + nDate + ", nCount=" + nCount + "]";
 	}
 	

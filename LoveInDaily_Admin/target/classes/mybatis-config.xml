@@ -10,11 +10,14 @@
 	<typeAliases>
 		<typeAlias type="com.kh.lida.notice.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.kh.lida.faq.model.vo.Faq" alias="faq"/>
+		<typeAlias type="com.kh.lida.sales.model.vo.Sales" alias="sales"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfile" alias="memPro"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.MemberProfileImg" alias="memProImg"/>
 		<typeAlias type="com.kh.lida.memberManagement.model.vo.Report" alias="report"/>
+		<typeAlias type="com.kh.lida.memberManagement.model.vo.Payment" alias="payment"/>		
 		<typeAlias type="com.kh.lida.admin.model.vo.Admin" alias="admin"/>
+		
 	</typeAliases>
 	
 	<!-- 어느 부분에 typeHandler를 적용할 것인지 패키지 영역을 설정한다. -->

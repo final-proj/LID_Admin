@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
+import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
 
@@ -87,9 +88,9 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	}
 
 	@Override
-	public int selectReportTotalContents() {
+	public int selectReportTotalContents(int mNo) {
 		
-		return sqlSession.selectOne("member.selectReportTotalContents");
+		return sqlSession.selectOne("member.selectReportTotalContents", mNo);
 		
 	}
 
@@ -111,6 +112,13 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	public Member selectOneMember(int mNo) {
 		
 		return sqlSession.selectOne("member.selectOneMember",mNo);
+		
+	}
+
+	@Override
+	public List<Payment> selectPayment(int mNo) {
+
+		return sqlSession.selectList("member.selectPayment", mNo);
 		
 	}
 
