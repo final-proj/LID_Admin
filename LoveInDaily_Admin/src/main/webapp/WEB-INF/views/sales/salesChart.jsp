@@ -30,10 +30,11 @@ $.ajax({
 
     	      var data = new google.visualization.DataTable();
     	      data.addColumn('number', 'X');
-    	      data.addColumn('number', '${list3.item}');
+    	      data.addColumn('number', '월별 매출');
+    	      data.addColumn('number', '총 매출');
     	      if(list3.length != 0) {
                   $.each(list3, function(i, item3){
-                      data.addRow([item3.month, item3.amount]);
+                      data.addRow([item3.month, item3.amount, item3.total]);
                   });
               }
 
@@ -42,7 +43,7 @@ $.ajax({
     	          title: '월'
     	        },
     	        vAxis: {
-    	          title: '판매량'
+    	          title: '매출액(원)'
     	        },
     	        height: 450,
     	      };
@@ -85,73 +86,67 @@ $.ajax({
         }
     }
 });
+ $.ajax({
+    url: '${pageContext.request.contextPath}/sales/salesScdData.do',
+    type: 'post',
+    async: false,
+    success: function(list2) {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart2);
+        function drawChart2() {
+            var dataChart2 = [['구매 비율', '연령']];
+            if(list2.length != 0) {
+                $.each(list2, function(i, item2){
+                    dataChart2.push([item2.item, item2.amount]);
+                });
+                for(var i = 1; i < list2[0].month + 1; i++){
+                	$('#monthScd').append("<option value='" + i + "' id='monthScd" + i + "'>" + i + "월 </option>");
+                	if(i == list2[0].month) {
+                		$('#monthScd' + i).prop('selected',true);
+                	}
+                }
+            }
+            var data2 = google.visualization.arrayToDataTable(dataChart2);
+            var view2 = new google.visualization.DataView(data2);
+            var options2 = {
+            	width: 542, 
+            	height: 450,
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+            chart.draw(view2, options2);
+        }
+    }
 });
-
-/* $(document).ready(function(){
-
+});
+function chageLangSelect(){
+	var element = $('#month').val();
 	$.ajax({
-        url: '${pageContext.request.contextPath}/sales/salesData.do',
-        type: 'post',
-        async: false,
-        success: function(list) {
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var dataChart = [['Language', 'Speakers (in millions)']];
-                if(list.length != 0) {
-                    $.each(list, function(i, item){
-                        dataChart.push([item.item, item.ticket]);
-                    });
-                    for(var i = 1; i < list[0].month + 1; i++){
-                    	$('#month').append("<option value='" + i + "' id='month" + i + "'>" + i + "월 </option>");
-                    	if(i == list[0].month) {
-                    		$('#month' + i).prop('selected',true);
-                    	}
-                    }
-                }
-                var data = google.visualization.arrayToDataTable(dataChart);
-                var view = new google.visualization.DataView(data);
-                var options = {
-                	width: 542, 
-                	height: 450,
-                };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(view, options);
-            }
-        }
-    });
-}); */
-	/* $.ajax({
-        url: '${pageContext.request.contextPath}/sales/salesScdData.do',
-        type: 'post',
-        async: false,
-        success: function(list2) {
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var dataChart = [['Language', 'Speakers (in millions)']];
-                if(list.length != 0) {
-                    $.each(list, function(i, item2){
-                        dataChart.push([item2.item, item2.ticket]);
-                    });
-                    for(var i = 1; i < list[0].month + 1; i++){
-                    	$('#monthScd').append("<option value='" + i + "' id='monthScd" + i + "'>" + i + "월 </option>");
-                    	if(i == list2[0].month) {
-                    		$('#monthScd' + i).prop('selected',true);
-                    	}
-                    }
-                }
-                var data = google.visualization.arrayToDataTable(dataChart);
-                var view = new google.visualization.DataView(data);
-                var options = {
-                	width: 542, 
-                	height: 450,
-                };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(view, options);
-            }
-        }
-    }); */
+		url: '${pageContext.request.contextPath}/sales/salesMonthData.do',
+		data: {element : element},
+		type : "POST",
+		dataType : "json",
+		success: function(list){
+			 google.charts.load('current', {'packages':['corechart']});
+		     google.charts.setOnLoadCallback(drawChart);
+		     function drawChart() {
+		          var dataChart = [['정기권 이름', '구매 횟수']];
+		          if(list.length != 0) {
+		              $.each(list, function(i, item){
+		                  dataChart.push([item.item, item.amount]);
+		              });
+		          }
+	           var data2 = google.visualization.arrayToDataTable(dataChart);
+	           var view = new google.visualization.DataView(data2);
+	           var options2 = {
+		           	width: 542, 
+		           	height: 450,
+		           };
+		           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		           chart.draw(view, options2);
+	        }
+		}
+	});
+}
 </script>
 </head>
 <body>
@@ -197,7 +192,7 @@ $.ajax({
 						<div class="card">
 							<div class="card-body">
 							<h5 class="card-title">정기권 구매 비율
-							 <select id="month">
+							 <select id="month" onchange="chageLangSelect()">
 							</select>
 							</h5>
 								<div id="piechart"></div>
@@ -208,14 +203,14 @@ $.ajax({
 						<div class="card">
 							<div class="card-body">
 							<h5 class="card-title">
-								<select id="selectCa">
+								<select id="selectCa" onchange="chageLangSelect2()">
 									<option value="age">연령대별 결제 비율</option>
 									<option value="gender">성별 결제 비율</option>
 								</select>
 								<select id="monthScd">
 							</select>
 							</h5>
-								<div id="donutchart" style="width: 580px; height: 450px;"></div>
+								<div id="piechart2"></div>
 							</div>
 						</div>
 					</div>

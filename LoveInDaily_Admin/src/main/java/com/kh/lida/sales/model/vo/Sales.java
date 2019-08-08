@@ -12,16 +12,20 @@ public class Sales implements Serializable {
 	private String item;
     private int amount;
     private int month;
+    private int total;
+    private int element;
 	public Sales() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Sales(String item, int amount, int month) {
+	public Sales(String item, int amount, int month, int total, int element) {
 		super();
 		this.item = item;
 		this.amount = amount;
 		this.month = month;
+		this.total = total;
+		this.element = element;
 	}
 
 	public String getItem() {
@@ -47,10 +51,27 @@ public class Sales implements Serializable {
 	public void setMonth(int month) {
 		this.month = month;
 	}
+	
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getElement() {
+		return element;
+	}
+
+	public void setElement(int element) {
+		this.element = element;
+	}
 
 	@Override
 	public String toString() {
-		return "Sales [item=" + item + ", amount=" + amount + ", month=" + month + "]";
+		return "Sales [item=" + item + ", amount=" + amount + ", month=" + month + ", total=" + total + ", element="
+				+ element + "]";
 	}
 
 }

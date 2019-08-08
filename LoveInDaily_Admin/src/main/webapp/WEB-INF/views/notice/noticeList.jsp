@@ -41,7 +41,19 @@
 						console.log(data.nTitle);
 						$('#writer').val(data.nWriter);
 						$('#title').val(data.nTitle);
+						$('.ql-toolbar').remove();
+						$('#editor').remove();
+						$('#editor2').remove();
+						$('#removeEditor').append("<div id='editor' style='height: 305.6px;'></div>");
+						$('#removeEditor2').append("<div id='editor2' style='height: 300px;'></div>");
 						$('#editor').html(data.nContent);
+						new Quill('#editor', {
+					  		theme: 'snow'
+					    });
+						
+						new Quill('#editor2', {
+					  		theme: 'snow'
+					    });
 						$('#nno').val(nno);
 					},
 					error : function(error){
@@ -148,7 +160,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contents</label>
-                                        <div class="col-sm-9" >
+                                        <div class="col-sm-9" id="removeEditor">
                                    <div id="editor" style="height: 305.6px;">
                                 	</div>
 									<textarea name="nContent" style="display:none" id="hiddenArea"></textarea>
@@ -185,9 +197,10 @@
                                         <input type="text" data-toggle="tooltip" title="A Tooltip for the input !" class="form-control" id="validationDefault05" placeholder="Hover For tooltip" name="nTitle" required>
                                     </div>
                                 </div>
-                                <div id="editor2" style="height: 300px;">
-                                </div>
+                                <div id="removeEditor2">
+                                <div id="editor2" style="height: 300px;"></div>
 									<textarea name="nContent" style="display:none" id="hiddenArea2"></textarea>
+                                </div>
                                 </form>
                             </div>
                         </div>

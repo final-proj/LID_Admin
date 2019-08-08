@@ -23,4 +23,11 @@ public interface SalesService {
 	 * @return
 	 */
 	List<Sales> totalChart();
+	
+	/**
+	 * 월 선택 정기권 구매 비율
+	 * @param element
+	 * @return
+	 */
+	List<Sales> regularTicketMonthChart(int element);
 }

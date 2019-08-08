@@ -7,9 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Faq implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5014834214896807018L;
 	
 	private int fno;

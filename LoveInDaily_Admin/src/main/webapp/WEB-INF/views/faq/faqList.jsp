@@ -78,8 +78,7 @@
 			});
 		});
 	});
-	
-	/* $(function(){
+	$(function(){
 		$('#searchC').each(function(){
 			$(this).on('click', function(){
 				var fCategory = $(this).attr("val");
@@ -104,7 +103,7 @@
 			})
 		})
 		
-	})  */
+	})
 
 	function fn_delete(){
 		var fno = $('#fno').val();
