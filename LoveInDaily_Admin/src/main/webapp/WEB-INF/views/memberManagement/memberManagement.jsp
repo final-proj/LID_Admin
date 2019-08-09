@@ -125,8 +125,6 @@
 								<c:import url="memberDetail.jsp"></c:import>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">Save
-									changes</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
 							</div>
@@ -173,21 +171,7 @@
 				</c:forEach>
 			</c:forEach>
 		});
-		
-		function session_out(){
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/memberManagement/session_out.do",
-				dataType : "json",
-				success : function(data){
 	
-					console.log("성공");
-					
-				},
-				error : function(error){
-					alert("eroro");
-				}
-			});
 
 		}
 	</script>

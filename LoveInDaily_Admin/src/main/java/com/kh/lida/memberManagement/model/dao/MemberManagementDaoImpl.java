@@ -122,6 +122,13 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 		
 	}
 
+	@Override
+	public List<Payment> selectPaymentList() {
+
+		return sqlSession.selectList("member.selectPaymentList");
+		
+	}
+
 	
 	
 	

@@ -24,7 +24,7 @@
 								class="col-sm-3 text-right control-label col-form-label">이메일</label>
 							<div class="col-sm-9">
 								<label for="cono1"
-									class="col-sm-15 text-right control-label col-form-label"">${ member.mEmail }</label>
+									class="col-sm-15 text-right control-label col-form-label">${ member.mEmail }</label>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -97,13 +97,13 @@
 								<label for="cono1"
 									class="col-sm-3 text-right control-label col-form-label">회원상태</label>
 								<div class="col-sm-9">
-									<select name="" id="" style="margin-top: 4px;">
+									<select name="selectReport" id="selectReport" style="margin-top: 4px;">
 										<option value="1">1일정지</option>
 										<option value="15">15일정지</option>
 										<option value="30">30일정지</option>
 										<option value="10000">영구정지</option>
 									</select>
-									<button class="btn btn-outline-danger btn-sm"
+									<button class="btn btn-outline-danger btn-sm" onclick="mmDisable();"
 										style="margin-bottom: 4px; margin-left: 5px;">정지하기</button>
 								</div>
 							</div>
@@ -159,7 +159,7 @@
 									<td>${p.pNo}</td>
 									<td>${p.pTicket}</td>
 									<td>${p.pDate}</td>
-									<td>${p.poDate}</td>
+									<td>${p.pODate}</td>
 								</tr>
 							</c:forEach>
 					</table>
@@ -168,6 +168,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
 	<script>
 		function mmDisable(){
 		
@@ -175,10 +176,7 @@
 
 			var mNo = '${member.mNo}';
 			
-			
-			location.href="<%=request.getContextPath()%>
-		/memberManagement/mmDisable.do?mNo="
-					+ mNo + "&date=" + date;
+			location.href="<%=request.getContextPath()%>/memberManagement/mmDisable.do?mNo="+ mNo + "&date=" + date;
 
 		}
 	</script>

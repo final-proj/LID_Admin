@@ -79,33 +79,39 @@
 		});
 	});
 	
-	/* $(function(){
-		$('#searchC').each(function(){
-			$(this).on('click', function(){
-				var fCategory = $(this).attr("val");
-				
-				$.ajax({
+	function fn_filter(){
+				var fCategory = $('#filter').val();
+				location.href="${pageContext.request.contextPath}/faq/faqList.do?fCategory="+fCategory;
+				/* $.ajax({
 					url : "${pageContext.request.contextPath}/faq/faqList.do",
 					data : {fCategory : fCategory},
 					type : "POST",
 					dataType : "json",
 					success : function(data){
+						$('#deleteDiv').remove();
 						var str = "";
 						$each(data,function(i,v){
+							str += "<div id='deleteDiv'>";
 							str += "<form id=" + v.fno + ">";
 							str += "<div class='d-flex flex-row comment-row m-t-0' id=" + v.fno + ">";
-						})
-						
+							str += "<div class='comment-text w-100'>";
+							str += "<h6 class='font-medium'>제목 :" + v.fTitle + "</h6>";
+							str += "</div>";
+							str += "<div class='comment-footer'>";
+							str += "<span class='text-muted float-right'>";
+							str += "<c:if test='"+v.fCategory +"eq 1'>환불문의</c:if>";
+							str += "<c:if test='"+v.fCategory +"eq 2'>결제문의</c:if>";
+							str += "<c:if test='"+v.fCategory +"eq 3'>이용문의</c:if>";
+							str += "</span></div></div></div>";
+						}) 
+						$('#tt').append(str);
 					},
 					error : function(error){
 						console.log(error);
 					}
-				})
-			})
-		})
-		
-	})  */
-
+				}) */
+	}
+				
 	function fn_delete(){
 		var fno = $('#fno').val();
 		console.log(fno);
@@ -159,7 +165,7 @@
 									<!-- /btn-group -->
 									<div class="btn-group" id="btn1">
 										<select class="btn btn-outline-info dropdown-toggle btn-sm"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filter" onchange="fn_filter()">
 												
 											<option id="searchC" class="dropdown-item">ALL</option>
 											<option id="searchC" class="dropdown-item" value="1">결제 문의</option>
@@ -172,6 +178,7 @@
 
 							</div>
 							<div id="tt" class="comment-widgets scrollable">
+							<div id="deleteDiv">
 								<c:forEach items="${list }" var="f">
 									<form id="${f.fno }">
 										<div class="d-flex flex-row comment-row m-t-0" id="${f.fno }">
@@ -194,6 +201,7 @@
 										</div>
 									</form>
 								</c:forEach>
+							</div>
 							</div>
 							<c:out value="${pageBar}" escapeXml="false" />
 						</div>

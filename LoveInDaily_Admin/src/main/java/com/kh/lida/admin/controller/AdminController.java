@@ -79,6 +79,7 @@ public class AdminController {
 
 				if (a == null) {
 					msg = "존재하지 않는 아이디입니다.";
+					loc = "/";
 				} else {
 					if (bcryptPasswordEncoder.matches(pwd, a.getaPwd())) {
 						

@@ -41,11 +41,19 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 		map.put("mNo", mNo);
 		map.put("date", date);
 		
+		Member m = memberManagementDao.selectOneMember(mNo);
+		
 		result = memberManagementDao.mmDisable(mNo);
+		
+		if(m.getmLevel().equals("유료회원"))
+		{
+			result *= memberManagementDao.mmPayment(map);
+		}
+		
 		
 		System.out.println("여기여?");
 		
-		result *= memberManagementDao.mmPayment(map);
+		
 		
 		System.out.println("여여?");
 		
@@ -126,6 +134,13 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	public List<Payment> selectPayment(int mNo) {
 
 		return memberManagementDao.selectPayment(mNo);
+		
+	}
+
+	@Override
+	public List<Payment> selectPaymentList() {
+
+		return memberManagementDao.selectPaymentList();
 		
 	}
 	
