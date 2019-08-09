@@ -81,4 +81,6 @@ public interface MemberManagementService {
 	
 	List<Payment> selectPayment(int mNo);
 	
+	List<Payment> selectPaymentList();
+	
 }

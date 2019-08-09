@@ -36,7 +36,7 @@
 						class="hide-menu">FAQ</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/memberManagement/mmChart.do"
+					href="${pageContext.request.contextPath }/memberManagement/memberChart.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
 						class="hide-menu">Chart</span></a></li>
 				<li class="sidebar-item"><a
@@ -46,9 +46,14 @@
 						class="hide-menu">Sales management</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
+					href="${pageContext.request.contextPath }/payment/paymentView.do"
+					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+						class="hide-menu">Payment</span></a></li>
+				<li class="sidebar-item"><a
+					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath }/admin/insertAdmin.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-						class="hide-menu">Admin Create</span></a></li>		
+						class="hide-menu">Admin Create</span></a></li>
 
 			</ul>
 		</nav>

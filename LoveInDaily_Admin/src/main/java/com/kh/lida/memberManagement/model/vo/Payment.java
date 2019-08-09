@@ -1,98 +1,113 @@
 package com.kh.lida.memberManagement.model.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Payment implements Serializable{
+public class Payment implements Serializable {
 
-   /**
-    * 
-    */
-   private static final long serialVersionUID = 1004L;
-   
-   
-   private int pNo;
-   private Date pDate;
-   private Date poDate;
-   private int pTicket;
-   private int pMno;
-   
-   
-   public Payment() {
-      
-   }
-   
-   
-   public Payment(int pNo, Date pDate, Date poDate, int pTicket, int pMno) {
-      super();
-      this.pNo = pNo;
-      this.pDate = pDate;
-      this.poDate = poDate;
-      this.pTicket = pTicket;
-      this.pMno = pMno;
-   }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2694436251419257839L;
 
+	private int pNo;
+	private String pDate;
+	private String pODate;
+	private int pTicket;
+	private int pMno;
+	// 가상변수
+	private String pName;
+	
+	public Payment() {
 
-   public int getpNo() {
-      return pNo;
-   }
+	}
+	
+	
+
+	public Payment(int pNo, String pDate, String pODate, int pTicket, String pName) {
+		super();
+		this.pNo = pNo;
+		this.pDate = pDate;
+		this.pODate = pODate;
+		this.pTicket = pTicket;
+		this.pName = pName;
+	}
 
 
-   public void setpNo(int pNo) {
-      this.pNo = pNo;
-   }
 
+	public Payment(String pDate, String pODate, int pTicket, int pMno) {
+		super();
+		this.pDate = pDate;
+		this.pODate = pODate;
+		this.pTicket = pTicket;
+		this.pMno = pMno;
+	}
 
-   public Date getpDate() {
-      return pDate;
-   }
+	public Payment(int pNo, String pDate, String pODate, int pTicket, int pMno) {
+		super();
+		this.pNo = pNo;
+		this.pDate = pDate;
+		this.pODate = pODate;
+		this.pTicket = pTicket;
+		this.pMno = pMno;
+	}
 
+	@Override
+	public String toString() {
+		return "Payment [pNo=" + pNo + ", pDate=" + pDate + ", pODate=" + pODate + ", pTicket=" + pTicket + ", pMno="
+				+ pMno + "]";
+	}
+	
+	
 
-   public void setpDate(Date pDate) {
-      this.pDate = pDate;
-   }
+	public String getpName() {
+		return pName;
+	}
 
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
 
-   public Date getPoDate() {
-      return poDate;
-   }
+	public int getpNo() {
+		return pNo;
+	}
 
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
 
-   public void setPoDate(Date poDate) {
-      this.poDate = poDate;
-   }
+	public String getpDate() {
+		return pDate;
+	}
 
+	public void setpDate(String pDate) {
+		this.pDate = pDate;
+	}
 
-   public int getpTicket() {
-      return pTicket;
-   }
+	public String getpODate() {
+		return pODate;
+	}
 
+	public void setpODate(String pODate) {
+		this.pODate = pODate;
+	}
 
-   public void setpTicket(int pTicket) {
-      this.pTicket = pTicket;
-   }
+	public int getpTicket() {
+		return pTicket;
+	}
 
+	public void setpTicket(int pTicket) {
+		this.pTicket = pTicket;
+	}
 
-   public int getpMno() {
-      return pMno;
-   }
+	public int getpMno() {
+		return pMno;
+	}
 
+	public void setpMno(int pMno) {
+		this.pMno = pMno;
+	}
 
-   public void setpMno(int pMno) {
-      this.pMno = pMno;
-   }
-
-
-   @Override
-   public String toString() {
-      return "Payment [pNo=" + pNo + ", pDate=" + pDate + ", poDate=" + poDate + ", pTicket=" + pTicket + ", pMno="
-            + pMno + "]";
-   }
-
-
-   
-   
 }

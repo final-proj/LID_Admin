@@ -73,7 +73,7 @@ public class MemberManagementController {
 	  
 	  @RequestMapping("/memberManagement/memberReport.do")
 	  @ResponseBody
-	  public Map memberReport(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+	  public Map<String, Object> memberReport(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
 				@RequestParam int mNo, Model model) {
 		  
 		  Map<String, Object> map = new HashMap<String, Object>();
@@ -157,9 +157,7 @@ public class MemberManagementController {
 	  
 	  return "common/msg";
 	  
-	  }
-	 
-	  
-	  
+	  }  
+
 
 }

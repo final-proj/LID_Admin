@@ -19,7 +19,9 @@
 	<select id="selectPayment" resultType="payment">
 		SELECT * FROM PAYMENT WHERE PMNO = #{mNo}
 	</select>
-	
+	<select id= "selectPaymentList" resultType="payment">
+		SELECT PNO, PDATE, PODATE, PTICKET, (SELECT MNAME FROM MEMBER WHERE MNO = PMNO) PNAME  FROM PAYMENT
+  </select>
 	<select id="selectListReport" resultType="report">
 		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT WHERE RMEMBER = #{mNo}  
 	</select>

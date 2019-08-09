@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE mapper PUBLIC
 "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -20,7 +19,9 @@
 	<select id="selectPayment" resultType="payment">
 		SELECT * FROM PAYMENT WHERE PMNO = #{mNo}
 	</select>
-	
+	<select id= "selectPaymentList" resultType="payment">
+		SELECT PNO, PDATE, PODATE, PTICKET, (SELECT MNAME FROM MEMBER WHERE MNO = PMNO) PNAME  FROM PAYMENT
+	</select>
 	<select id="selectListReport" resultType="report">
 		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT WHERE RMEMBER = #{mNo}  
 	</select>
@@ -46,4 +47,3 @@
 		DELETE FROM MEMBER WHERE MNO = #{mNo}
 	</delete>
 </mapper>
-

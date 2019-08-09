@@ -85,4 +85,6 @@ public interface MemberManagementDao {
 	
 	List<Payment> selectPayment(int mNo);
 	
+	List<Payment> selectPaymentList();
+	
 }
