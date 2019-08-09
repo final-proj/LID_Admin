@@ -157,36 +157,7 @@ public class MemberManagementController {
 	  
 	  return "common/msg";
 	  
-	  }
-	  
-	  
-	  @RequestMapping("/payment/paymentView.do")
-	  public String paymentView(Model model) {
-		  
-		  List<Payment> p = memberManagementService.selectPaymentList();
-		  
-		  System.out.println(p);
-		  
-		  model.addAttribute("paymentList", p);
-		  
-		  return "memberManagement/payment";
-		  
-	  }
-	  
-	  @RequestMapping("/memberManagement/memberChart.do")
-	  public String memberChart(Model model) {
-		  
-		  List<Payment> p = memberManagementService.selectPaymentList();
-		  
-		  System.out.println(p);
-		  
-		  model.addAttribute("paymentList", p);
-		  
-		  return "memberManagement/memberChart";
-		  
-	  }
-	 
-	  
-	  
+	  }  
+
 
 }

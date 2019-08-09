@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sales">
+	<select id="salesTicketChart" resultType="sales">
+		SELECT COUNT(*) AS
+		AMOUNT, DECODE(PTICID, 1, '1일권', 2, '1개월', 3, '3개월', 4, '6개월', '1년')
+		AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH FROM PAYMENT WHERE
+		EXTRACT(MONTH FROM PDATE) = TO_CHAR(SYSDATE, 'MM') GROUP BY PTICID ORDER BY PTICID
+	</select>
+	<select id="salesTotalChart" resultType="sales">
+		SELECT A.AMOUNT,
+		SUM(AMOUNT) OVER(PARTITION BY ITEM ORDER BY MONTH) AS TOTAL, A.MONTH, A.ITEM
+		FROM (SELECT SUM(DECODE(PTICID, 1, 5000, 2, 36000, 3, 91800, 4, 135000,179000)) AS AMOUNT,
+		TO_CHAR(PDATE, 'MM') AS MONTH, TO_CHAR(SYSDATE, 'YYYY') AS ITEM FROM PAYMENT
+		GROUP BY TO_CHAR(PDATE, 'MM') ORDER BY MONTH) A
+	</select>
+	<select id="salesAgeChart" resultType="sales">
+		SELECT COUNT(*) AS AMOUNT, 
+		DECODE(SUBSTR(M.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH
+		FROM PAYMENT P JOIN MEMBER_PROFILE M ON(PMNO = MPMNO) WHERE TO_CHAR(P.PDATE, 'MM') = TO_CHAR(SYSDATE, 'MM')
+		GROUP BY DECODE(SUBSTR(M.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') ORDER BY ITEM
+	</select>
+	<select id="salesTicketMonthChart" resultType="sales">
+		SELECT COUNT(*) AS
+		AMOUNT, DECODE(PTICID, 1, '1일권', 2, '1개월', 3, '3개월', 4, '6개월', '1년')
+		AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH FROM PAYMENT WHERE
+		EXTRACT(MONTH FROM PDATE) = #{element} GROUP BY PTICID
+	</select>
+	<select id="salesAgeMonthChart" resultType="sales">
+		SELECT COUNT(*) AS AMOUNT, 
+		DECODE(SUBSTR(M.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH
+		FROM PAYMENT P JOIN MEMBER_PROFILE M ON(PMNO = MPMNO) WHERE TO_CHAR(P.PDATE, 'MM') = #{element}
+		GROUP BY DECODE(SUBSTR(M.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') ORDER BY ITEM
+	</select>
+	<select id="salesGenderMonthChart" resultType="sales">
+		SELECT COUNT(*) AS AMOUNT, DECODE(M.MPGENDER, 'F', '여성', '남성') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH FROM PAYMENT P 
+		JOIN MEMBER_PROFILE M ON(PMNO = MPMNO) WHERE TO_CHAR(P.PDATE, 'MM') = #{element} GROUP BY M.MPGENDER
+	</select>
+</mapper>
