@@ -9,6 +9,7 @@ import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
+import com.kh.lida.sales.model.vo.Sales;
 
 public interface MemberManagementService {
 
@@ -82,5 +83,13 @@ public interface MemberManagementService {
 	List<Payment> selectPayment(int mNo);
 	
 	List<Payment> selectPaymentList();
+	
+	List<Sales> ageMonthChart(int element);
+	
+	List<Sales> genderMonthChart();
+	
+	List<Sales> ageChart();
+	
+	
 	
 }

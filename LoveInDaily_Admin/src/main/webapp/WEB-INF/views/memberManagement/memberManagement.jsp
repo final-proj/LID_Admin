@@ -137,6 +137,13 @@
 		 ****************************************/
 		$('#zero_config').DataTable();
 		$(function(){
+			
+			if(${list ne null}){
+				
+				$('#memberDetail').modal();
+				
+			}
+			
 			$("table td").not("#zero_config td:eq(6)").click(function(){
 				
 				var mNo = $(this).parent().children().eq(0).text();
@@ -147,16 +154,26 @@
 					type : "POST",
 					dataType : "json",
 					success : function(data){
-						
-						$('#memberDetail').modal();
+						location.reload();
 					},
 					error : function(error){
 						alert("eroro");
 					}
 				});
-				
-				
 			
+			});
+			
+			$('#memberDetail').on('hide.bs.modal', function(){
+				
+				$.ajax({
+					url : "${pageContext.request.contextPath}/memberMangement/sessionOut.do",
+					dataType : "json",
+					success : function(data){
+					},
+					error : function(error){
+					}
+				});
+				
 			});
 		});
 	</script>
@@ -173,7 +190,7 @@
 		});
 	
 
-		}
+		
 	</script>
 
 

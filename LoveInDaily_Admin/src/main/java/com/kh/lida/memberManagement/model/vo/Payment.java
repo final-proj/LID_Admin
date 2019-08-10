@@ -20,6 +20,7 @@ public class Payment implements Serializable {
 	// 가상변수
 	private String pName;
 	
+	
 	public Payment() {
 
 	}
