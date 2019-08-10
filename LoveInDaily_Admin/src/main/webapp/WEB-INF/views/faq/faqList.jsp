@@ -162,17 +162,6 @@
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<!-- /btn-group -->
-									<div class="btn-group" id="btn1">
-										<select class="btn btn-outline-info dropdown-toggle btn-sm"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filter" onchange="fn_filter()">
-												
-											<option id="searchC" class="dropdown-item">ALL</option>
-											<option id="searchC" class="dropdown-item" value="1">결제 문의</option>
-											<option id="searchC" class="dropdown-item" value="2">환불 문의</option> 
-											<option id="searchC" class="dropdown-item" value="3">이용 문의</option>
-										</select>
-									</div>
 									
 								</h4>
 
@@ -242,7 +231,7 @@
 										<label for="cono1"
 											class="col-sm-3 text-right control-label col-form-label">Contents</label>
 										<div class="col-sm-9" id="removeEditor">
-											<div id="editor" style="height: 332px;"></div>
+											<div id="editor" style="height: 305px;"></div>
 											<textarea name="fContent" style="display: none"
 												id="hiddenArea"></textarea>
 										</div>

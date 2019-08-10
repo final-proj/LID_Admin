@@ -6,7 +6,7 @@ import java.util.Map;
 import com.kh.lida.faq.model.vo.Faq;
 
 public interface FaqDao {
-	List<Map<String, String>> selectFnqList(int cPage, int limit, String fCategory);
+	List<Map<String, String>> selectFnqList(int cPage, int limit);
 
 	Faq selectOneFaq(int fno);
 
@@ -16,5 +16,5 @@ public interface FaqDao {
 
 	int deleteFaq(int fno);
 	
-	int selectFaqTotalContents(String fCategory);
+	int selectFaqTotalContents();
 }
