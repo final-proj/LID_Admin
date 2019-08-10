@@ -16,9 +16,9 @@ public class FaqServiceImpl implements FaqService {
 	private FaqDao faqDao;
 
 	@Override
-	public List<Map<String, String>> selectFaqList(int cPage, int limit, String fCategory) {
+	public List<Map<String, String>> selectFaqList(int cPage, int limit) {
 		// TODO Auto-generated method stub
-		return faqDao.selectFnqList(cPage, limit, fCategory);
+		return faqDao.selectFnqList(cPage, limit);
 	}
 
 	@Override
@@ -46,9 +46,9 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public int selectFaqTotalContents(String fCategory) {
+	public int selectFaqTotalContents() {
 		// TODO Auto-generated method stub
-		return faqDao.selectFaqTotalContents(fCategory);
+		return faqDao.selectFaqTotalContents();
 	}
 	
 	
