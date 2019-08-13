@@ -1,5 +1,6 @@
 package com.kh.lida.memberManagement.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.lida.common.util.Utils;
 import com.kh.lida.memberManagement.model.service.MemberManagementService;
@@ -20,6 +22,9 @@ import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
+import com.kh.lida.sales.model.vo.Sales;
+
+import oracle.sql.TIMESTAMP;
 
 @SessionAttributes(value = { "member","totalContents", "limit","pageBar","mp","list","payment"})
 @Controller
@@ -42,35 +47,7 @@ public class MemberManagementController {
 	  return "memberManagement/memberManagement";
 	  
 	  }
-	  
-	/*
-	 * @RequestMapping("/memberManagement/memberReport.do") public String
-	 * memberReport(@RequestParam(value = "cPage", required = false, defaultValue =
-	 * "1") int cPage, Model model, @RequestParam int mNo) {
-	 * 
-	 * int limit = 4;
-	 * 
-	 * ArrayList<Map<String, String>> list = new
-	 * ArrayList<>(memberManagementService.selectReportList(cPage, limit, mNo));
-	 * 
-	 * int totalContents = memberManagementService.selectReportTotalContents(mNo);
-	 * 
-	 * Member m = memberManagementService.selectOneMember(mNo);
-	 * 
-	 * MemberProfile mp = memberManagementService.mmSelectProfile(mNo);
-	 * 
-	 * String pageBar = Utils.getPageBar(totalContents, cPage, limit,
-	 * "memberReport.do");
-	 * 
-	 * model.addAttribute("list", list).addAttribute("totalContents",
-	 * totalContents).addAttribute("numPerPage", limit) .addAttribute("pageBar",
-	 * pageBar).addAttribute("member", m).addAttribute("mp",mp);
-	 * 
-	 * return "memberManagement/memberReport";
-	 * 
-	 * }
-	 */
-	  
+
 	  @RequestMapping("/memberManagement/memberReport.do")
 	  @ResponseBody
 	  public Map<String, Object> memberReport(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
@@ -92,11 +69,6 @@ public class MemberManagementController {
 		  
 		  List<Payment> p = memberManagementService.selectPayment(mNo);
 		  
-		  System.out.println(p);
-		  
-		  
-
-		  
 		  map.put("member", m);
 		  map.put("mp",mp);
 
@@ -108,12 +80,8 @@ public class MemberManagementController {
 		  model.addAttribute("mp",mp);
 		  model.addAttribute("payment",p);
 		  
-		  
 		  return map;
-		  
 	  }
-	  
-
 	  
 		@RequestMapping(value="/memberManagement/reportView.do", method = RequestMethod.POST)
 		@ResponseBody
@@ -156,8 +124,62 @@ public class MemberManagementController {
 	  model.addAttribute("loc", loc).addAttribute("msg", msg);
 	  
 	  return "common/msg";
-	  
-	  }  
 
+	  }
+	  
+	  
+	  @RequestMapping("/payment/paymentView.do")
+	  public String paymentView(Model model) {
+		  
+		  List<Payment> p = memberManagementService.selectPaymentList();
+		  
+		  System.out.println(p);
+		  
+		  model.addAttribute("paymentList", p);
+		  
+		  return "memberManagement/payment";
+		  
+	  }
+	  
+	  @RequestMapping("/memberManagement/memberChart.do")
+	  public String memberChart(Model model) {
+		  
+		  List<Payment> p = memberManagementService.selectPaymentList();
+		  
+		  System.out.println(p);
+		  
+		  model.addAttribute("paymentList", p);
+		  
+		  return "memberManagement/memberChart";
+		  
+	  }
+	  
+	  @RequestMapping("/memberMangement/sessionOut.do")
+	  @ResponseBody
+	  public String SessionOut(SessionStatus sessionStatus) {
+		  
+		  if (!sessionStatus.isComplete()) {
+				sessionStatus.setComplete();
+			}
+		  
+		  return "ok";
+	  }
+	 
+		
+		  @RequestMapping(value = "/memberManagement/membergenderData.do", method =RequestMethod.POST)
+		  @ResponseBody public List<Sales> salesgenderData(){ 
+			List<Sales> list = null;
+			list = memberManagementService.genderMonthChart();
+			
+		  	return list; 
+		  }
+		
+		  @RequestMapping(value = "/memberManagement/memberScdData.do", method =RequestMethod.POST)
+		  @ResponseBody public List<Sales> salesScdData(){ 
+			List<Sales> list2 = memberManagementService.ageChart();
+		  	System.out.println(list2);
+		  	return list2; 
+		  }
+	  
 
 }

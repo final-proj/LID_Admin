@@ -18,165 +18,100 @@
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 $(document).ready(function(){
-$.ajax({
-    url: '${pageContext.request.contextPath}/sales/salesThdData.do',
-    type: 'post',
-    async: false,
-    success: function(list3) {
-    	google.charts.load('current', {packages: ['corechart', 'line']});
-    	google.charts.setOnLoadCallback(drawBasic);
-
-    	function drawBasic() {
-
-    	      var data = new google.visualization.DataTable();
-    	      data.addColumn('number', 'X');
-    	      data.addColumn('number', '월별 매출');
-    	      data.addColumn('number', '총 매출');
-    	      if(list3.length != 0) {
-                  $.each(list3, function(i, item3){
-                      data.addRow([item3.month, item3.amount, item3.total]);
-                  });
-              }
-
-    	      var options = {
-    	        hAxis: {
-    	          title: '월'
-    	        },
-    	        vAxis: {
-    	          title: '매출액(원)'
-    	        },
-    	        height: 450,
-    	      };
-
-    	      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-    	      chart.draw(data, options);
-    	    }
-    }
-});
-
-$.ajax({
-    url: '${pageContext.request.contextPath}/sales/salesData.do',
-    type: 'post',
-    async: false,
-    success: function(list) {
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var dataChart = [['정기권 이름', '구매 횟수']];
-            if(list.length != 0) {
-                $.each(list, function(i, item){
-                    dataChart.push([item.item, item.amount]);
-                });
-                for(var i = 1; i < list[0].month + 1; i++){
-                	$('#month').append("<option value='" + i + "' id='month" + i + "'>" + i + "월 </option>");
-                	if(i == list[0].month) {
-                		$('#month' + i).prop('selected',true);
-                	}
-                }
-            }
-            var data2 = google.visualization.arrayToDataTable(dataChart);
-            var view = new google.visualization.DataView(data2);
-            var options2 = {
-            	width: 542, 
-            	height: 450,
-            };
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(view, options2);
-        }
-    }
-});
- $.ajax({
-    url: '${pageContext.request.contextPath}/sales/salesScdData.do',
-    type: 'post',
-    async: false,
-    success: function(list2) {
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart2);
-        function drawChart2() {
-            var dataChart2 = [['구매 비율', '연령']];
-            if(list2.length != 0) {
-                $.each(list2, function(i, item2){
-                    dataChart2.push([item2.item, item2.amount]);
-                });
-                for(var i = 1; i < list2[0].month + 1; i++){
-                	$('#monthScd').append("<option value='" + i + "' id='monthScd" + i + "'>" + i + "월 </option>");
-                	if(i == list2[0].month) {
-                		$('#monthScd' + i).prop('selected',true);
-                	}
-                }
-            }
-            var data2 = google.visualization.arrayToDataTable(dataChart2);
-            var view2 = new google.visualization.DataView(data2);
-            var options2 = {
-            	width: 542, 
-            	height: 450,
-            };
-            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-            chart.draw(view2, options2);
-        }
-    }
-});
-});
-function changeLangSelect(){
-	var element = $('#month').val();
 	$.ajax({
-		url: '${pageContext.request.contextPath}/sales/salesMonthData.do',
-		data: {element : element},
-		type : "POST",
-		dataType : "json",
-		success: function(list){
-			 google.charts.load('current', {'packages':['corechart']});
-		     google.charts.setOnLoadCallback(drawChart);
-		     function drawChart() {
-		          var dataChart = [['정기권 이름', '구매 횟수']];
-		          if(list.length != 0) {
-		              $.each(list, function(i, item){
-		                  dataChart.push([item.item, item.amount]);
-		              });
-		          }
-	           var data2 = google.visualization.arrayToDataTable(dataChart);
-	           var view = new google.visualization.DataView(data2);
-	           var options2 = {
-		           	width: 542, 
-		           	height: 450,
-		           };
-		           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-		           chart.draw(view, options2);
-	        }
-		}
+	    url: '${pageContext.request.contextPath}/sales/salesThdData.do',
+	    type: 'post',
+	    async: false,
+	    success: function(list3) {
+	    	google.charts.load('current', {packages: ['corechart', 'line']});
+	    	google.charts.setOnLoadCallback(drawBasic);
+
+	    	function drawBasic() {
+
+	    	      var data = new google.visualization.DataTable();
+	    	      data.addColumn('number', 'X');
+	    	      data.addColumn('number', '월별 매출');
+	    	      data.addColumn('number', '총 매출');
+	    	      if(list3.length != 0) {
+	                  $.each(list3, function(i, item3){
+	                      data.addRow([item3.month, item3.amount, item3.total]);
+	                  });
+	              }
+
+	    	      var options = {
+	    	        hAxis: {
+	    	          title: '월'
+	    	        },
+	    	        vAxis: {
+	    	          title: '매출액(원)'
+	    	        },
+	    	        height: 450,
+	    	      };
+
+	    	      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+	    	      chart.draw(data, options);
+	    	    }
+	    }
 	});
-}
-function changeLangSelect2(){
-	var category = $('#selectCa').val();
-	var element = $('#monthScd').val();
-	$.ajax({
-		url: '${pageContext.request.contextPath}/sales/salesMonthCaData.do',
-		data: {category:category, element : element},
-		type : "POST",
-		dataType : "json",
-		success: function(list2){
-			 google.charts.load('current', {'packages':['corechart']});
-		     google.charts.setOnLoadCallback(drawChart2);
-		     function drawChart2() {
-	          var dataChart2 = [['구매 비율', '연령']];
-	          if(list2.length != 0) {
+	
+	
+ $.ajax({
+	    url: '${pageContext.request.contextPath}/memberManagement/membergenderData.do',
+	    type: 'post',
+	    async: false,
+	    success: function(list) {
+	        google.charts.load('current', {'packages':['corechart']});
+	        google.charts.setOnLoadCallback(drawChart);
+	        function drawChart() {
+	            var dataChart = [['멤버', '성별']];
+	            if(list.length != 0) {
+	            	console.log(list);
+	                $.each(list, function(i, item){
+	                    dataChart.push([item.item, item.amount]);
+	                });
+	            }
+	            var data = google.visualization.arrayToDataTable(dataChart);
+	            var view = new google.visualization.DataView(data);
+	            var options = {
+	            	width: 542, 
+	            	height: 450,
+	            };
+	            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	            chart.draw(view, options);
+	        }
+	    }
+	});
+ $.ajax({
+	    url: '${pageContext.request.contextPath}/memberManagement/memberScdData.do',
+	    type: 'post',
+	    async: false,
+	    success: function(list2) {
+	        google.charts.load('current', {'packages':['corechart']});
+	        google.charts.setOnLoadCallback(drawChart2);
+	        function drawChart2() {
+	            var dataChart2 = [['멤버', '연령']];
+	            if(list2.length != 0) {
 	                $.each(list2, function(i, item2){
-	                dataChart2.push([item2.item, item2.amount]);
-		              });
-		         }
-		          var data2 = google.visualization.arrayToDataTable(dataChart2);
-		          var view2 = new google.visualization.DataView(data2);
-		          var options2 = {
-		          	width: 542, 
+	                    dataChart2.push([item2.item, item2.amount]);
+	                });
+	       
+	            }
+	            var data2 = google.visualization.arrayToDataTable(dataChart2);
+	            var view2 = new google.visualization.DataView(data2);
+	            var options2 = {
+	            	width: 542, 
 	            	height: 450,
 	            };
 	            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-		        chart.draw(view2, options2);
-			}
-		}
+	            chart.draw(view2, options2);
+	        }
+	    }
 	});
-}
+ 
+});
+
+
 </script>
 </head>
 <body>
@@ -207,7 +142,7 @@ function changeLangSelect2(){
 				</div>
 			</div>
 			<div class="container-fluid">
-			<div class="row">
+					<div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -221,9 +156,7 @@ function changeLangSelect2(){
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-body">
-							<h5 class="card-title">정기권 구매 비율
-							 <select id="month" onchange="changeLangSelect()">
-							</select>
+							<h5 class="card-title">회원 성별 비율
 							</h5>
 								<div id="piechart"></div>
 							</div>
@@ -232,19 +165,15 @@ function changeLangSelect2(){
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-body">
-							<h5 class="card-title">
-								<select id="selectCa" onchange="changeLangSelect2()">
-									<option value="age">연령대별 결제 비율</option>
-									<option value="gender">성별 결제 비율</option>
-								</select>
-								<select id="monthScd" onchange="changeLangSelect2()">
-							</select>
+							<h5 class="card-title">연령별 회원 정보
 							</h5>
-								<div id="piechart2"></div>
+									<div id="piechart2"></div>
 							</div>
 						</div>
 					</div>
+				
 				</div>
+				
 			</div>
 			<footer class="footer text-center">
 			   All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
