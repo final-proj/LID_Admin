@@ -38,7 +38,6 @@ public class ChartDaoImpl implements ChartDao {
 
 	@Override
 	public List<Chart> ageMonthChart(int element) {
-		System.out.println(sqlSession.selectList("Chart.ChartAgeMonthChart", element));
 		return sqlSession.selectList("chart.salesAgeMonthChart", element);
 	}
 
