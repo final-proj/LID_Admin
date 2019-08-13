@@ -1,47 +1,54 @@
-package com.kh.lida.sales.model.service;
+package com.kh.lida.chart.model.service;
 
 import java.util.List;
 
-import com.kh.lida.sales.model.vo.Sales;
+import com.kh.lida.chart.model.vo.Chart;
 
-public interface SalesService {
+public interface ChartService {
 
 	/**
 	 * 정기권 구매 비율
 	 * @return
 	 */
-	List<Sales> regularTicketChart();
+	List<Chart> regularTicketChart();
 	
 	/**
 	 * 연령별 결제 비율
 	 * @return
 	 */
-	List<Sales> ageChart();
+	List<Chart> ageChart();
 	
 	/**
 	 * 총 매출
 	 * @return
 	 */
-	List<Sales> totalChart();
+	List<Chart> totalChart();
 	
 	/**
 	 * 월 선택 정기권 결제 비율
 	 * @param element
 	 * @return
 	 */
-	List<Sales> regularTicketMonthChart(int element);
+	List<Chart> regularTicketMonthChart(int element);
 	
 	/**
 	 * 월 선택 연령별 정기권 결제 비율
 	 * @param element
 	 * @return
 	 */
-	List<Sales> ageMonthChart(int element);
+	List<Chart> ageMonthChart(int element);
 	
 	/**
 	 * 월 선택 성별 정기권 결제 비율
 	 * @param element
 	 * @return
 	 */
-	List<Sales> genderMonthChart(int element);
+	List<Chart> genderMonthChart(int element);
+	
+	/**
+	 * 회원 성별 비율
+	 * @return
+	 */
+	List<Chart> genderLineChart();
+	
 }

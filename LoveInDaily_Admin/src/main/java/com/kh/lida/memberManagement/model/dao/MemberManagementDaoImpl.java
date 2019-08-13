@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
@@ -131,21 +132,24 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	}
 
 	@Override
-	public List<Sales> ageMonthChart(int element) {
+	public List<Chart> ageMonthChart(int element) {
+
 
 		return sqlSession.selectList("member.memberAgeMonthChart", element);
 		
 	}
 
 	@Override
-	public List<Sales> genderMonthChart() {
+	public List<Chart> genderMonthChart() {
+
 
 		return sqlSession.selectList("member.memberGenderMonthChart");
 		
 	}
 
 	@Override
-	public List<Sales> ageChart() {
+	public List<Chart> ageChart() {
+
 		
 		return sqlSession.selectList("member.memberAgeChart");
 		

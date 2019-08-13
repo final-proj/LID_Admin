@@ -3,6 +3,7 @@ package com.kh.lida.memberManagement.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
@@ -84,12 +85,13 @@ public interface MemberManagementService {
 	
 	List<Payment> selectPaymentList();
 	
-	List<Sales> ageMonthChart(int element);
+
+	List<Chart> ageMonthChart(int element);
 	
-	List<Sales> genderMonthChart();
+	List<Chart> genderMonthChart();
 	
-	List<Sales> ageChart();
-	
+	List<Chart> ageChart();
+
 	
 	
 }

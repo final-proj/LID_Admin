@@ -79,38 +79,6 @@
 		});
 	});
 	
-	function fn_filter(){
-				var fCategory = $('#filter').val();
-				location.href="${pageContext.request.contextPath}/faq/faqList.do?fCategory="+fCategory;
-				/* $.ajax({
-					url : "${pageContext.request.contextPath}/faq/faqList.do",
-					data : {fCategory : fCategory},
-					type : "POST",
-					dataType : "json",
-					success : function(data){
-						$('#deleteDiv').remove();
-						var str = "";
-						$each(data,function(i,v){
-							str += "<div id='deleteDiv'>";
-							str += "<form id=" + v.fno + ">";
-							str += "<div class='d-flex flex-row comment-row m-t-0' id=" + v.fno + ">";
-							str += "<div class='comment-text w-100'>";
-							str += "<h6 class='font-medium'>제목 :" + v.fTitle + "</h6>";
-							str += "</div>";
-							str += "<div class='comment-footer'>";
-							str += "<span class='text-muted float-right'>";
-							str += "<c:if test='"+v.fCategory +"eq 1'>환불문의</c:if>";
-							str += "<c:if test='"+v.fCategory +"eq 2'>결제문의</c:if>";
-							str += "<c:if test='"+v.fCategory +"eq 3'>이용문의</c:if>";
-							str += "</span></div></div></div>";
-						}) 
-						$('#tt').append(str);
-					},
-					error : function(error){
-						console.log(error);
-					}
-				}) */
-	}
 				
 	function fn_delete(){
 		var fno = $('#fno').val();
@@ -154,7 +122,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title m-b-0">
-									<br /> View
+									<br /> 미리보기
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -205,7 +173,7 @@
 									
 									<div class="form-group row">
 										<label for="fname"
-											class="col-sm-3 text-right control-label col-form-label">Title</label>
+											class="col-sm-3 text-right control-label col-form-label">제목</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" id="title"
 												name="fTitle">
@@ -213,25 +181,22 @@
 									</div>
 									<div class="form-group row">
 										<label for="fname"
-											class="col-sm-3 text-right control-label col-form-label">Category</label>
+											class="col-sm-3 text-right control-label col-form-label">문의 유형</label>
 										<div class="col-sm-9">
 											<div class="btn-group">
-												<select style="width: 300%;"
-													class="btn btn-outline-info dropdown-toggle"
-													data-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false" name="fCategory" id="category">
-													<option id="category1" class="dropdown-item" value="1">결제 문의</option>
-													<option id="category2" class="dropdown-item" value="2">환불 문의</option> 
-													<option id="category3" class="dropdown-item" value="3">이용 문의</option>
-												</select>
+												<select style="width: 300%;" class="btn btn-light" onchange="selectB()" name="fCategory" id="category">
+                                					<option id="category1" value="1">결제 문의</option>
+                                					<option id="category2" value="2">환불 문의</option>
+                                					<option id="category3" value="3">이용 문의</option>
+                                				</select>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="cono1"
-											class="col-sm-3 text-right control-label col-form-label">Contents</label>
+											class="col-sm-3 text-right control-label col-form-label">내용</label>
 										<div class="col-sm-9" id="removeEditor">
-											<div id="editor" style="height: 305px;"></div>
+											<div id="editor" style="height: 329px;"></div>
 											<textarea name="fContent" style="display: none"
 												id="hiddenArea"></textarea>
 										</div>
@@ -239,51 +204,14 @@
 								</div>
 								<div class="border-top">
 									<div class="card-body" id="btn">
-										<button type="submit" class="btn btn-primary">Update</button>
-										<button type="button" class="btn btn-danger" onclick="fn_delete();">Delete</button>
+										<button type="submit" class="btn btn-primary">수정</button>
+										<button type="button" class="btn btn-danger" onclick="fn_delete();">삭제</button>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form id="insert" action="${pageContext.request.contextPath}/faq/faqInsert.do" method="post">
-                                <h4 class="card-title">
-                                	Insert FNQ
-                                </h4>
-                                	<button type="submit" class="btn btn-success" id="test2">Submit</button>
-                                <div class="btn-group" id="test4">
-									<select style="width: 200px;"
-											class="btn btn-outline-info dropdown-toggle"
-											data-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="false" name="fCategory" id="category">
-										<option class="dropdown-item" value="1">결제 문의</option>
-										<option class="dropdown-item" value="2">환불 문의</option> 
-										<option class="dropdown-item" value="3">이용 문의</option>
-									</select>
-								</div>
-                                <!-- Create the editor container -->
-                                <div class="row mb-3 align-items-center" id="test3">
-                                    <div class="col-lg-4 col-md-12 text-right">
-                                        <span>Title</span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-12">
-                                        <input type="text" data-toggle="tooltip" title="A Tooltip for the input !" class="form-control" id="validationDefault05" placeholder="Hover For tooltip" name="fTitle" required>
-                                    </div>
-                                </div>
-                                	<div id="removeEditor2">
-                                		<div id="editor2" style="height: 300px;"></div>
-										<textarea name="fContent" style="display:none" id="hiddenArea2"></textarea>
-									</div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 			</div>
 		</div>
 	</div>

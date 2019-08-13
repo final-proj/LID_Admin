@@ -55,12 +55,12 @@
 		FROM MEMBER M JOIN MEMBER_PROFILE MP ON(MNO = MPMNO)
 		GROUP BY DECODE(SUBSTR(MP.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') ORDER BY ITEM
 	</select>-->
-	<select id="memberGenderMonthChart" resultType="sales">
+	<select id="memberGenderMonthChart" resultType="chart">
 		SELECT COUNT(*) AS AMOUNT, DECODE(MP.MPGENDER, 'F', '여성', '남성') AS ITEM FROM MEMBER M
 		JOIN MEMBER_PROFILE MP ON(MNO = MPMNO) GROUP BY MP.MPGENDER
 	</select> 
 	
-	<select id="memberAgeChart" resultType="sales">
+	<select id="memberAgeChart" resultType="chart">
 		SELECT COUNT(*) AS AMOUNT, 
 		DECODE(SUBSTR(MP.MPAGE, 1, 1), 1, '10대', 2, '20대', 3, '30대', 4, '40대', 5, '50대', 6, '60대') AS ITEM, TO_CHAR(SYSDATE, 'MM') AS MONTH
 		FROM MEMBER M JOIN MEMBER_PROFILE MP ON(MNO = MPMNO) WHERE TO_CHAR(M.MDATE, 'MM') = TO_CHAR(SYSDATE, 'MM')

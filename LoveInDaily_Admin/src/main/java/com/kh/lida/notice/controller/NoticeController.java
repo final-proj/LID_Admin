@@ -40,24 +40,6 @@ public class NoticeController {
 		return "notice/noticeList";
 	}
 	
-	
-	@RequestMapping("/notice/noticeInsert.do")
-	public String noticeInsert(Notice n, Model model) {
-		
-		System.out.println(n);
-		int result = noticeService.insertNotice(n);
-		
-		String loc = "/notice/noticeList.do";
-		String msg = "";
-		
-		if(result > 0) msg = "등록 성공";
-		else msg = "등록 실패";
-		
-		model.addAttribute("loc", loc).addAttribute("msg", msg);
-		
-		return "common/msg";
-	}
-	
 	@RequestMapping(value="/notice/noticeView.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Notice selectOneNotice(@RequestParam int nno) {

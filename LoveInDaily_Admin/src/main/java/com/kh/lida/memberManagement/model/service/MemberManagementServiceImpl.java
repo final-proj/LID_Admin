@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.memberManagement.model.dao.MemberManagementDao;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
@@ -146,21 +147,22 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 	}
 
 	@Override
-	public List<Sales> ageMonthChart(int element) {
+	public List<Chart> ageMonthChart(int element) {
+
 
 		return memberManagementDao.ageMonthChart(element);
 		
 	}
 
 	@Override
-	public List<Sales> genderMonthChart() {
+	public List<Chart> genderMonthChart() {
 
 		return memberManagementDao.genderMonthChart();
 		
 	}
 
 	@Override
-	public List<Sales> ageChart() {
+	public List<Chart> ageChart() {
 
 		return memberManagementDao.ageChart();
 		

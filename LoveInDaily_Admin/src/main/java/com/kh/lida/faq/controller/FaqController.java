@@ -15,23 +15,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.lida.common.util.Utils;
 import com.kh.lida.faq.model.service.FaqService;
 import com.kh.lida.faq.model.vo.Faq;
+import com.kh.lida.notice.model.service.NoticeService;
+import com.kh.lida.notice.model.vo.Notice;
 
 @Controller
 public class FaqController {
 
 	@Autowired
 	FaqService faqServie;
+	@Autowired
+	NoticeService noticeServie;
 	
 	@RequestMapping("/faq/faqList.do")
 	public String selectFaqList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,Model model) {
-		int limit = 6; // 한 페이지 당 게시글 수
+		int limit =8; // 한 페이지 당 게시글 수
 		// 1. 현재 페이지 게시글 목록 가져오기
 		ArrayList<Map<String, String>> list = new ArrayList<>(faqServie.selectFaqList(cPage, limit));
 		System.out.println(list);
 		// 2. 전체 페이지 게시글 수 가져오기
 		int totalContents = faqServie.selectFaqTotalContents();
 
-		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "fnqList.do");
+		String pageBar = Utils.getPageBar(totalContents, cPage, limit, "faqList.do");
 
 		model.addAttribute("list", list).addAttribute("totalContents", totalContents).addAttribute("numPerPage", limit)
 				.addAttribute("pageBar", pageBar);
@@ -39,18 +43,28 @@ public class FaqController {
 		return "faq/faqList";
 	}
 	
-	@RequestMapping("/faq/faqInsert.do")
-	public String insertFaq(Faq f, Model model) {
-		System.out.println(f.getfCategory());
-		System.out.println(f);
-		int result = faqServie.insertFaq(f);
-		
-		String loc = "/faq/faqList.do";
+	@RequestMapping("/faq/insert.do")
+	public String insertFaq(@RequestParam(value = "writer") String writer, @RequestParam(value = "title") String title, @RequestParam(value = "content") String content, @RequestParam(value = "selectBoard") int selectBoard, @RequestParam(value = "fCategory", required = false) String fCategory ,Model model) {
+		String loc = "";
 		String msg = "";
-		
-		if(result > 0) msg = "등록 성공";
-		else msg = "등록 실패";
-		
+		int result = 0;
+		if(selectBoard == 2) {
+			Faq f = new Faq(title, content, fCategory);
+			result = faqServie.insertFaq(f);
+			
+			loc = "/faq/faqList.do";
+			System.out.println("Asdfa");
+			if(result > 0) msg = "등록 성공";
+			else msg = "등록 실패";
+		} else {
+			Notice n = new Notice(writer, title, content);
+			System.out.println(n);
+			result = noticeServie.insertNotice(n);
+			loc="/notice/noticeList.do";
+			if(result > 0) msg = "등록 성공";
+			else msg = "등록 실패";
+			System.out.println("Asdfa");
+		}
 		model.addAttribute("loc", loc).addAttribute("msg", msg);
 		
 		return "common/msg";

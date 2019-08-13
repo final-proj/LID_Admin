@@ -1,11 +1,11 @@
-package com.kh.lida.sales.model.vo;
+package com.kh.lida.chart.model.vo;
 
 import java.io.Serializable;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Sales implements Serializable {
+public class Chart implements Serializable {
 
 	private static final long serialVersionUID = 1442038071908173020L;
 	
@@ -14,12 +14,12 @@ public class Sales implements Serializable {
     private int month;
     private int total;
     private int element;
-	public Sales() {
+	public Chart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Sales(String item, int amount, int month, int total, int element) {
+	public Chart(String item, int amount, int month, int total, int element) {
 		super();
 		this.item = item;
 		this.amount = amount;

@@ -18,32 +18,28 @@
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath}/memberManagement/mmForm.do"
 					aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
-						class="hide-menu">Member management</span></a></li>
-				<li class="sidebar-item"><a
-					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/inquiry/"
-					aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-						class="hide-menu">Inquiry</span></a></li>
+						class="hide-menu">회원 관리</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath }/notice/noticeList.do"
 					aria-expanded="false"><i class="mdi mdi-border-inside"></i><span
-						class="hide-menu">Notice</span></a></li>
+						class="hide-menu">공지 사항</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
+					href="${pageContext.request.contextPath }/inquiry/"
+					aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
+						class="hide-menu">문의 사항</span></a></li>
+				<li class="sidebar-item"><a
+					class="sidebar-link waves-effect waves-dark sidebar-link"
+
 					href="${pageContext.request.contextPath }/faq/faqList.do"
 					aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-						class="hide-menu">FAQ</span></a></li>
+						class="hide-menu">자주 묻는 질문들</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/memberManagement/memberChart.do"
+					href="${pageContext.request.contextPath }/payment/paymentView.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-						class="hide-menu">Chart</span></a></li>
-				<li class="sidebar-item"><a
-					class="sidebar-link waves-effect waves-dark sidebar-link"
-					href="${pageContext.request.contextPath }/sales/salesChart.do"
-					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-						class="hide-menu">Sales management</span></a></li>
+						class="hide-menu">결제 관리</span></a></li>
 				<li class="sidebar-item"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath }/payment/paymentView.do"
@@ -53,7 +49,8 @@
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 					href="${pageContext.request.contextPath }/admin/insertAdmin.do"
 					aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-						class="hide-menu">Admin Create</span></a></li>
+
+						class="hide-menu">계정 생성</span></a></li>
 
 			</ul>
 		</nav>

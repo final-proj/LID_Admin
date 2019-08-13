@@ -1,3 +1,4 @@
+
 package com.kh.lida.memberManagement.controller;
 
 import java.sql.Timestamp;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.common.util.Utils;
 import com.kh.lida.memberManagement.model.service.MemberManagementService;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
-import com.kh.lida.sales.model.vo.Sales;
 
 import oracle.sql.TIMESTAMP;
 
@@ -167,16 +168,16 @@ public class MemberManagementController {
 	 
 		
 		  @RequestMapping(value = "/memberManagement/membergenderData.do", method =RequestMethod.POST)
-		  @ResponseBody public List<Sales> salesgenderData(){ 
-			List<Sales> list = null;
+		  @ResponseBody public List<Chart> salesgenderData(){ 
+			List<Chart> list = null;
 			list = memberManagementService.genderMonthChart();
 			
 		  	return list; 
 		  }
 		
 		  @RequestMapping(value = "/memberManagement/memberScdData.do", method =RequestMethod.POST)
-		  @ResponseBody public List<Sales> salesScdData(){ 
-			List<Sales> list2 = memberManagementService.ageChart();
+		  @ResponseBody public List<Chart> salesScdData(){ 
+			List<Chart> list2 = memberManagementService.ageChart();
 		  	System.out.println(list2);
 		  	return list2; 
 		  }

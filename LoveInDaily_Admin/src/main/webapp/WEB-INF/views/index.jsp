@@ -8,8 +8,166 @@
 
 <head>
 <c:import url="common/header.jsp"/>
-</head>
+<style>
 
+#test2{
+	position: absolute;
+	left: 92%;
+}
+#test3{
+	position: relative;
+	right: 29%;
+}
+#test4{
+	position: absolute;
+	left:73%;
+}
+#selectBoard{
+	margin: 10px;
+}
+</style>
+</head>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+$(function(){
+	$.ajax({
+	    url: '${pageContext.request.contextPath}/chart/salesThdData.do',
+	    type: 'post',
+	    async: false,
+	    success: function(list3) {
+	    	google.charts.load('current', {packages: ['corechart', 'line']});
+	    	google.charts.setOnLoadCallback(drawBasic);
+
+	    	function drawBasic() {
+
+	    	      var data = new google.visualization.DataTable();
+	    	      data.addColumn('number', 'X');
+	    	      data.addColumn('number', '월별 매출');
+	    	      data.addColumn('number', '총 매출');
+	    	      if(list3.length != 0) {
+	                  $.each(list3, function(i, item3){
+	                      data.addRow([item3.month, item3.amount, item3.total]);
+	                  });
+	              }
+
+	    	      var options = {
+	    	        hAxis: {
+	    	          title: '월'
+	    	        },
+	    	        vAxis: {
+	    	          title: '매출액(원)'
+	    	        },
+	    	        height: 450,
+	    	      };
+
+	    	      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+	    	      chart.draw(data, options);
+	    	    }
+	    }
+	});
+});
+function selectB(){
+	var select = $('#selectBoard').val();
+	console.log(select)
+	if(select == 1) {
+		$('#test4').remove();
+		
+	} else {
+		var str = "";
+		str += "<div class='btn-group' id='test4'>";
+		str += "<select style='width: 200px;' class='btn btn-light' name='fCategory' id='category'>";
+		str += "<option value='1'>결제 문의</option>";
+		str += "<option value='2'>환불 문의</option>";
+		str += "<option value='3'>이용 문의</option>";
+		str += "</select> </div>";
+		$('#selectDiv').append(str);
+	}
+}
+function selectC(){
+	var select = $('#selectChart').val();
+	console.log(select);
+	if(select == 1) {
+		$.ajax({
+		    url: '${pageContext.request.contextPath}/chart/salesThdData.do',
+		    type: 'post',
+		    async: false,
+		    success: function(list3) {
+		    	google.charts.load('current', {packages: ['corechart', 'line']});
+		    	google.charts.setOnLoadCallback(drawBasic);
+
+		    	function drawBasic() {
+
+		    	      var data = new google.visualization.DataTable();
+		    	      data.addColumn('number', 'X');
+		    	      data.addColumn('number', '월별 매출');
+		    	      data.addColumn('number', '총 매출');
+		    	      if(list3.length != 0) {
+		                  $.each(list3, function(i, item3){
+		                      data.addRow([item3.month, item3.amount, item3.total]);
+		                  });
+		              }
+
+		    	      var options = {
+		    	        hAxis: {
+		    	          title: '월'
+		    	        },
+		    	        vAxis: {
+		    	          title: '매출액(원)'
+		    	        },
+		    	        height: 450,
+		    	      };
+
+		    	      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+		    	      chart.draw(data, options);
+		    	    }
+		    }
+		});
+	} else {
+		$.ajax({
+		    url: '${pageContext.request.contextPath}/chart/genderChart.do',
+		    type: 'post',
+		    type: 'post',
+		    async: false,
+		    success: function(list2) {
+		    	google.charts.load('current', {packages: ['corechart', 'line']});
+		    	google.charts.setOnLoadCallback(drawBasic);
+
+		    	function drawBasic() {
+
+		    	      var data = new google.visualization.DataTable();
+		    	      data.addColumn('number', 'X');
+		    	      data.addColumn('number', '월 가입 회원(남)');
+		    	      data.addColumn('number', '월 가입 회원(녀)');
+		    	      data.addColumn('number', '총 회원');
+		    	      if(list2.length != 0) {
+		                  $.each(list2, function(i, item2){
+		                      data.addRow([item2.element, item2.amount, item2.month, item2.total]);
+		                  });
+		              }
+
+		    	      var options = {
+		    	        hAxis: {
+		    	          title: '월'
+		    	        },
+		    	        vAxis: {
+		    	          title: '회원수(명)'
+		    	        },
+		    	        height: 450,
+		    	      };
+
+		    	      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+		    	      chart.draw(data, options);
+		    	    }
+		    }
+		});
+	}
+	
+}
+</script>
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -52,7 +210,6 @@
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Library</li>
                                 </ol>
                             </nav>
@@ -77,67 +234,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Site Analysis</h4>
-                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- column -->
-                                    <div class="col-lg-9">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-line-chart"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-user m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">2540</h5>
-                                                   <small class="font-light">Total Users</small>
-                                                </div>
-                                            </div>
-                                             <div class="col-6">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-plus m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">120</h5>
-                                                   <small class="font-light">New Users</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-cart-plus m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">656</h5>
-                                                   <small class="font-light">Total Shop</small>
-                                                </div>
-                                            </div>
-                                             <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-tag m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">9540</h5>
-                                                   <small class="font-light">Total Orders</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-table m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">100</h5>
-                                                   <small class="font-light">Pending Orders</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-globe m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">8540</h5>
-                                                   <small class="font-light">Online Orders</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- column -->
-                                </div>
+                                <h5 class="card-title">
+									<select class="btn btn-light" id="selectChart" onchange="selectC()">
+                                		<option value="1">총 매출액</option>
+                                		<option value="2">총 회원수</option>
+                                	</select>
+								</h5>
+									<div id="chart_div"></div>
                             </div>
                         </div>
                     </div>
@@ -149,187 +252,40 @@
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-6">
-                        
-                        <!-- Card -->
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">To Do List</h4>
-                                <div class="todo-widget scrollable" style="height:450px;">
-                                    <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label todo-label" for="customCheck">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span class="badge badge-pill badge-danger float-right">Today</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label todo-label" for="customCheck1">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing</span><span class="badge badge-pill badge-primary float-right">1 week </span>
-                                                </label>
-                                            </div>
-                                            <div class="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                <label class="custom-control-label todo-label" for="customCheck2">
-                                                    <span class="todo-desc">Give Purchase report to</span> <span class="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                <label class="custom-control-label todo-label" for="customCheck3">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing </span> <span class="badge badge-pill badge-warning float-right">2 weeks</span>
-                                                </label>
-                                            </div>
-                                            <div class="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                                <label class="custom-control-label todo-label" for="customCheck4">
-                                                    <span class="todo-desc">Give Purchase report to</span> <span class="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="${pageContext.request.contextPath }/resources/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- card -->
-                        
-                        <!-- card new -->
-                        
-                    </div>
-                    <!-- column -->
-
-                    <div class="col-lg-6">
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title m-b-0">Progress Box</h4>
-                                <div class="m-t-20">
-                                    <div class="d-flex no-block align-items-center">
-                                        <span>81% Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>125</span>
-                                        </div>
+                                <form id="insert" action="${pageContext.request.contextPath}/faq/insert.do" method="post">
+                                <h4 class="card-title">
+                                	
+                                	<select class="btn btn-light" id="selectBoard" name="selectBoard" onchange="selectB()">
+                                		<option value="1">공지사항</option>
+                                		<option value="2">FAQ</option>
+                                	</select>
+                                </h4>
+                                	<button type="submit" class="btn btn-success" id="test2">등록</button>
+                                	<input type="hidden" name="writer" value="admin" required>
+                                	<div id="selectDiv">
+	                                	
+                                	</div>
+                                <!-- Create the editor container -->
+                                <div class="row mb-3 align-items-center" id="test3">
+                                    <div class="col-lg-4 col-md-12 text-right">
+                                        <span>제목</span>
                                     </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="col-lg-8 col-md-12">
+                                        <input type="text" data-toggle="tooltip" title="A Tooltip for the input !" class="form-control" id="validationDefault05" placeholder="Hover For tooltip" name="title" required>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>72% Uniquie Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>120</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>53% Impressions</span>
-                                        <div class="ml-auto">
-                                            <span>785</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>3% Online Users</span>
-                                        <div class="ml-auto">
-                                            <span>8</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 3%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>	
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title m-b-0">Progress Box</h4>
-                                <div class="m-t-20">
-                                    <div class="d-flex no-block align-items-center">
-                                        <span>81% Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>125</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>72% Uniquie Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>120</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>53% Impressions</span>
-                                        <div class="ml-auto">
-                                            <span>785</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>3% Online Users</span>
-                                        <div class="ml-auto">
-                                            <span>8</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 3%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>	
-                        <!-- card -->
+                                	<div>
+                                		<div id="editor" style="height: 300px;"></div>
+										<textarea name="content" style="display:none" id="hiddenArea"></textarea>
+									</div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                    
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
@@ -349,7 +305,14 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    
+  <script>
+  var quill2 = new Quill('#editor', {
+      theme: 'snow'
+  });
+  $('#insert').on('submit',function(e){
+		$("#hiddenArea").text($("#editor").html());
+	});
+  </script>
 
 </body>
 
