@@ -32,6 +32,6 @@
     <!-- 트랜잭션 처리와 관련된 메니저 객체 선언하기 -->
  	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
-    </bean> 
+    </bean>
 		
 </beans>

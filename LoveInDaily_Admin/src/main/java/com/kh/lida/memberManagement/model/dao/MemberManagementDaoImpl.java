@@ -16,6 +16,7 @@ import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
+import com.kh.lida.sales.model.vo.Sales;
 
 @Repository
 public class MemberManagementDaoImpl implements MemberManagementDao{
@@ -133,6 +134,7 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	@Override
 	public List<Chart> ageMonthChart(int element) {
 
+
 		return sqlSession.selectList("member.memberAgeMonthChart", element);
 		
 	}
@@ -140,12 +142,14 @@ public class MemberManagementDaoImpl implements MemberManagementDao{
 	@Override
 	public List<Chart> genderMonthChart() {
 
+
 		return sqlSession.selectList("member.memberGenderMonthChart");
 		
 	}
 
 	@Override
 	public List<Chart> ageChart() {
+
 		
 		return sqlSession.selectList("member.memberAgeChart");
 		
