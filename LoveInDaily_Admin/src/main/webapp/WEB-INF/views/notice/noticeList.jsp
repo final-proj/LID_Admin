@@ -43,15 +43,9 @@
 						$('#title').val(data.nTitle);
 						$('.ql-toolbar').remove();
 						$('#editor').remove();
-						$('#editor2').remove();
 						$('#removeEditor').append("<div id='editor' style='height: 305.6px;'></div>");
-						$('#removeEditor2').append("<div id='editor2' style='height: 300px;'></div>");
 						$('#editor').html(data.nContent);
 						new Quill('#editor', {
-					  		theme: 'snow'
-					    });
-						
-						new Quill('#editor2', {
 					  		theme: 'snow'
 					    });
 						$('#nno').val(nno);
@@ -188,9 +182,6 @@
 	
 	<c:import url="../common/footer.jsp" />
 	<script>
-	var quill2 = new Quill('#editor2', {
-        theme: 'snow'
-    });
 	var quill = new Quill('#editor', {
         theme: 'snow'
     });

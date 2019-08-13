@@ -136,7 +136,6 @@
 		});
 	}
 </script>
-
 </head>
 <body>
 	<div class="preloader">
@@ -232,7 +231,7 @@
 						<div class="card">
 							<div class="card-body">
 							<h5 class="card-title">
-								<select class="btn btn-light" id="selectCa" onchange="changeLangSelect2()">
+								<select class="btn btn-light" id="selectCa"  onchange="changeLangSelect2()">
 									<option value="age">연령대별 결제 비율</option>
 									<option value="gender">성별 결제 비율</option>
 								</select>
