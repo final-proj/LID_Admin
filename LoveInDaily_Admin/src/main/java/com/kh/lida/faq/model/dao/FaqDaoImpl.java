@@ -17,9 +17,9 @@ public class FaqDaoImpl implements FaqDao{
 	SqlSession sqlSession;
 	
 	@Override
-	public List<Map<String, String>> selectFnqList(int cPage, int limit, String fCategory) {
+	public List<Map<String, String>> selectFnqList(int cPage, int limit) {
 		RowBounds rows = new RowBounds((cPage -1) * limit, limit);
-		return sqlSession.selectList("faq.selectFaqList", fCategory, rows);
+		return sqlSession.selectList("faq.selectFaqList", null, rows);
 	}
 
 	@Override
@@ -47,9 +47,9 @@ public class FaqDaoImpl implements FaqDao{
 	}
 
 	@Override
-	public int selectFaqTotalContents(String fCategory) {
+	public int selectFaqTotalContents() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("faq.selectFaqTotalContents", fCategory);
+		return sqlSession.selectOne("faq.selectFaqTotalContents");
 	}
 
 }

@@ -124,7 +124,7 @@ public class MemberManagementController {
 	  model.addAttribute("loc", loc).addAttribute("msg", msg);
 	  
 	  return "common/msg";
-	  
+
 	  }
 	  
 	  
@@ -180,7 +180,6 @@ public class MemberManagementController {
 		  	System.out.println(list2);
 		  	return list2; 
 		  }
-	  
 	  
 
 }

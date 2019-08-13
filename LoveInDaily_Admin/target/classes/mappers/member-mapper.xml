@@ -22,7 +22,6 @@
 	<select id= "selectPaymentList" resultType="payment">
 		SELECT PNO, PDATE, PODATE, PTICKET, (SELECT MNAME FROM MEMBER WHERE MNO = PMNO) PNAME  FROM PAYMENT
 	</select>
-	
 	<select id="selectListReport" resultType="report">
 		SELECT RNO, (SELECT MNAME FROM MEMBER WHERE MNO = RREPORTER) RREPORTERNAME, (SELECT MNAME FROM MEMBER WHERE MNO = RMEMBER) RMEMBERNAME, RCONTENT, RDATE FROM REPORT WHERE RMEMBER = #{mNo}  
 	</select>
@@ -47,7 +46,6 @@
 	<delete id="mmDelete" parameterType="_int">
 		DELETE FROM MEMBER WHERE MNO = #{mNo}
 	</delete>
-	
 	
 	<!-- Chart 매퍼 -->
 <!-- 	<select id="memberAgeMonthChart" resultType="sales">

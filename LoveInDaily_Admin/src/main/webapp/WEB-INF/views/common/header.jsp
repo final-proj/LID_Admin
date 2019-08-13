@@ -31,5 +31,3 @@
    <script src="${path}/resources/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
    <script src="${path}/resources/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
    <script src="${path}/resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-   
-   

@@ -13,7 +13,7 @@ public interface FaqService {
 	 * @param cPage 
 	 * @return
 	 */
-	List<Map<String, String>> selectFaqList(int cPage, int limit, String fCategory);
+	List<Map<String, String>> selectFaqList(int cPage, int limit);
 	
 	/**
 	 * FAQ 조회
@@ -47,6 +47,6 @@ public interface FaqService {
 	 * FNQ 전체 페이지 조회
 	 * @return
 	 */
-	int selectFaqTotalContents(String fCategory);
+	int selectFaqTotalContents();
 	
 }
