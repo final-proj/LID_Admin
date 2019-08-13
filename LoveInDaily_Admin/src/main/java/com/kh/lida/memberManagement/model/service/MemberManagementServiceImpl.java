@@ -15,6 +15,7 @@ import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
 import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
+import com.kh.lida.sales.model.vo.Sales;
 
 
 @Service
@@ -147,6 +148,7 @@ public class MemberManagementServiceImpl implements MemberManagementService{
 
 	@Override
 	public List<Chart> ageMonthChart(int element) {
+
 
 		return memberManagementDao.ageMonthChart(element);
 		
