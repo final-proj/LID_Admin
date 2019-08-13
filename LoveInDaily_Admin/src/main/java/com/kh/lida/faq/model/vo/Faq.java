@@ -27,6 +27,13 @@ public class Faq implements Serializable {
 		this.fCategory = fCategory;
 	}
 
+	public Faq(String fTitle, String fContent, String fCategory) {
+		super();
+		this.fTitle = fTitle;
+		this.fContent = fContent;
+		this.fCategory = fCategory;
+	}
+
 	public int getFno() {
 		return fno;
 	}

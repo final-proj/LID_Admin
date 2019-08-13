@@ -87,12 +87,12 @@
 		<div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Notice</h4>
+                        <h4 class="page-title">공지사항</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Notice</li>
+                                    <li class="breadcrumb-item active" aria-current="page">공지사항</li>
                                 </ol>
                             </nav>
                         </div>
@@ -107,7 +107,7 @@
 							<div class="card-body">
 								<h4 class="card-title m-b-0">
 								<br />
-									View
+									미리보기
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -147,19 +147,19 @@
                                     <h4 class="card-title"></h4>
                                     <input id="nno" type="hidden" name="nno">
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label" >Writer</label>
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label" >작성자</label>
                                         <div class="col-sm-9" >
                                             <input type="text" class="form-control" id="writer" readonly="readonly" placeholder="Please Select Content">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Title</label>
+                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">제목</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="title" name="nTitle">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contents</label>
+                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">내용</label>
                                         <div class="col-sm-9" id="removeEditor">
                                    <div id="editor" style="height: 305.6px;">
                                 	</div>
@@ -170,42 +170,14 @@
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body" id="btn">
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                        <button type="button" class="btn btn-danger" onclick="fn_delete();">Delete</button>
+                                        <button type="submit" class="btn btn-primary">수정</button>
+                                        <button type="button" class="btn btn-danger" onclick="fn_delete();">삭제</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
 					</div>
 				</div>
-				<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form id="insert" action="${pageContext.request.contextPath}/notice/noticeInsert.do" method="post">
-                                <h4 class="card-title">
-                                	Insert Notice
-                                </h4>
-                                	<button type="submit" class="btn btn-success" id="test2">Submit</button>
-                                <!-- Create the editor container -->
-                	                <input type="hidden" name="nWriter" value="admin" required>
-                                <div class="row mb-3 align-items-center" id="test3">
-                                    <div class="col-lg-4 col-md-12 text-right">
-                                        <span>Title</span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-12">
-                                        <input type="text" data-toggle="tooltip" title="A Tooltip for the input !" class="form-control" id="validationDefault05" placeholder="Hover For tooltip" name="nTitle" required>
-                                    </div>
-                                </div>
-                                <div id="removeEditor2">
-                                <div id="editor2" style="height: 300px;"></div>
-									<textarea name="nContent" style="display:none" id="hiddenArea2"></textarea>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 			</div>
 			<footer class="footer text-center">
    All Rights Reserved by Matrix-admin. Designed and Developed by <a

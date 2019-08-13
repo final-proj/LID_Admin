@@ -1,12 +1,13 @@
 package com.kh.lida.memberManagement.model.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
+import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 
 public interface MemberManagementDao {
@@ -72,7 +73,7 @@ public interface MemberManagementDao {
 	 * 페이징 처리를 위한 총 페이지 갯수
 	 * @return
 	 */
-	int selectReportTotalContents();
+	int selectReportTotalContents(int mNo);
 	
 	/**
 	 * 신고내역 조회
@@ -82,5 +83,15 @@ public interface MemberManagementDao {
 	Report selectOneReport(int rno);
 	
 	Member selectOneMember(int mNo);
+	
+	List<Payment> selectPayment(int mNo);
+	
+	List<Payment> selectPaymentList();
+	
+	List<Chart> ageMonthChart(int element);
+	
+	List<Chart> genderMonthChart();
+	
+	List<Chart> ageChart();
 	
 }

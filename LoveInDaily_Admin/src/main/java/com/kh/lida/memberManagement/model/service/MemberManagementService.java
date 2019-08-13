@@ -3,9 +3,11 @@ package com.kh.lida.memberManagement.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.lida.chart.model.vo.Chart;
 import com.kh.lida.memberManagement.model.vo.Member;
 import com.kh.lida.memberManagement.model.vo.MemberProfile;
 import com.kh.lida.memberManagement.model.vo.MemberProfileImg;
+import com.kh.lida.memberManagement.model.vo.Payment;
 import com.kh.lida.memberManagement.model.vo.Report;
 import com.kh.lida.notice.model.vo.Notice;
 
@@ -67,7 +69,7 @@ public interface MemberManagementService {
 	 * 페이징 처리를 위한 총 페이지 갯수
 	 * @return
 	 */
-	int selectReportTotalContents();
+	int selectReportTotalContents(int mNo);
 	
 	/**
 	 * 신고내역 조회
@@ -77,5 +79,17 @@ public interface MemberManagementService {
 	Report selectOneReport(int rno);
 	
 	Member selectOneMember(int mNo);
+	
+	List<Payment> selectPayment(int mNo);
+	
+	List<Payment> selectPaymentList();
+	
+	List<Chart> ageMonthChart(int element);
+	
+	List<Chart> genderMonthChart();
+	
+	List<Chart> ageChart();
+	
+	
 	
 }
